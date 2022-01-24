@@ -43,7 +43,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines
+all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -56,6 +56,12 @@ faq1.2:
 
 read_lines:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/read_lines.cpp -o $(BUILDDIR)/read_lines
+
+iter_files:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
+
+boost_test:
+	$(CXX) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
 
 
 # link
@@ -110,6 +116,7 @@ clean:
 	rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
 	rm $(BUILDDIR)/std_array faq*
+	rm read_lines iter_files boost_test
 
 # delete all auto generated files
 .PHONY: distclean
