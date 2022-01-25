@@ -61,7 +61,7 @@ iter_files:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
 
 boost_test:
-	$(CXX) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
+	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
 
 
 # link

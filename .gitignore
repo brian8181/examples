@@ -47,9 +47,13 @@ m4/lt~obsolete.m4
 # can automatically generate from config.status script
 # (which is called by configure script))
 build/*.o
-exmaples
+build/examples
+build/examples_test
 build/faq1.1
-build/faq1.2b
+build/faq1.2
 build/std_array
 build/read_lines
 build/boost_test
+build/iter_files
+build/bash_color_test
+
