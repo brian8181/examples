@@ -43,7 +43,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test
+all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test regx_replace1 sub_match sub_match2 dump_ifstream
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -62,6 +62,18 @@ iter_files:
 
 boost_test:
 	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
+
+regx_replace1:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
+
+sub_match:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
+
+sub_match2:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match2.cpp -o $(BUILDDIR)/sub_match2
+
+dump_ifstream:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/dump_ifstream.cpp $(SRC)/utility.cpp -o $(BUILDDIR)/dump_ifstream
 
 
 # link
@@ -116,7 +128,7 @@ clean:
 	rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
 	rm $(BUILDDIR)/std_array faq*
-	rm read_lines iter_files boost_test
+	rm read_lines iter_files boost_test regx_replace1 sub_match sub_match2
 
 # delete all auto generated files
 .PHONY: distclean
