@@ -74,13 +74,12 @@ string ofread(string path)
 map<string, string> create_map(string path)
 {
     map<string, string> m;
-
     return m;
 }
 
 bool load_config(string path, map<string, string>& config)
 {
-    map<string, string> config;
+    //map<string, string> config;
     string src = fstream_readlines(path);
 
     string name_exp = "([A-Za-z]+\\w*)";

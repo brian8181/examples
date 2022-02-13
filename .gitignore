@@ -56,4 +56,8 @@ build/read_lines
 build/boost_test
 build/iter_files
 build/bash_color_test
+build/dump_ifstream
+build/map_insert
+
+.vscode/*.log
 
