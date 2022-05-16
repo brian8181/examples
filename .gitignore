@@ -58,6 +58,7 @@ build/iter_files
 build/bash_color_test
 build/dump_ifstream
 build/map_insert
+build/boost_regex
 
 .vscode/*.log
 
