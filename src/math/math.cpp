@@ -17,8 +17,8 @@ unsigned long factorial(unsigned long n)
         return 0;
     }
 
-    unsigned long ret = 0;
-    for(int i = 1; i < n+1; ++i)
+    unsigned long ret = 1;
+    for(int i = 2; i < n+1; ++i)
         ret *= i;
     return ret;
 }
