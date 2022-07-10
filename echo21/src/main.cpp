@@ -4,9 +4,9 @@
 #include <unistd.h>         /* for STDIN_FILENO */
 #include <sys/select.h>     /* for pselect   */
 #include "main.hpp"
+#include <vector>
 
-using std::cin;
-using std::string;
+using namespace std;
 
 int stdin_ready (int filedes)
 {
@@ -24,21 +24,20 @@ int main(int argc, char* argv[])
 {
 	try
 	{
+		vector<string> args;
+		args.assign(argv, argv + argc);
+
 		if(stdin_ready (STDIN_FILENO))
 		{
 				string buffer;
 				cin >> buffer;
-				// add piped buffer to end of argv
-				char* argvtmp[sizeof(char*) * argc+1];
-				memcpy(argvtmp, argv, sizeof(char*) * argc);
-				argvtmp[argc] = &buffer[0];
-				argv = argvtmp;
-				++argc;
+				args.push_back(buffer);
 		}
-		return parse_options(argc, argv);
+		return parse_options(args);
 	}
 	catch(std::logic_error& ex)
 	{
 	 	std::cout << ex.what() << std::endl;
 	}
 }
+

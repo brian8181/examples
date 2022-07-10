@@ -22,9 +22,15 @@
 
 using namespace std;
 
-int parse_options(int argc, char* argv[])
+//int parse_options(int argc, char* argv[])
+int parse_options(vector<string> argv)
 {
-	// echo !
-	cout << argv[1] << endl;
+	//cout << "Hello Template!" << endl;
+
+	int argc = argv.size();
+	for(int i = 0; i < argc; ++i)
+	{
+		cout << argv[i] << endl;
+	}
 	return 0;
 }
