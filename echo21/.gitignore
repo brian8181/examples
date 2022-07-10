@@ -37,3 +37,5 @@ src/Search.code-search
 build/rx.core
 test/rx.core
 .vscode/*.log
+build/echo21
+build/echo21_test
