@@ -43,7 +43,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert
+all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_mpi
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -61,10 +61,13 @@ iter_files:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
 
 boost_test:
-	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
+	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
 
 boost_regex:
-	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_77_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+
+boost_mpi:
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
 
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
