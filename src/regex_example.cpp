@@ -7,10 +7,10 @@ using namespace std;
 int main () 
 {
  
-   if (regex_match ("a\\\\b", regex("a\\\\\\\\b") ))
+   if (regex_match ( "a\\\\b", regex("a\\\\\\\\b") ))
       cout << "a\\\\b => matched\n";
 
-   if (regex_match ("softwareTesting", regex("(soft)(.*)") ))
+   if (regex_match ( "softwareTesting", regex("(soft)(.*)") ))
       cout << "string:literal => matched\n";
  
    const char mystr[] = "SoftwareTestingHelp";

@@ -16,7 +16,7 @@ AC_PROG_CPP
 LT_PREREQ([2.2])
 LT_INIT
 
-# Checks for libraries.
+# Checks for libraries.-
 # FIXME: Replace `main' with a function in `-lcppunit':
 AC_CHECK_LIB([CPPUNIT_TEST], [main])
 
