@@ -46,10 +46,12 @@ m4/lt~obsolete.m4
 # (meta build system like autotools, 
 # can automatically generate from config.status script
 # (which is called by configure script))
-Makefile
+# Makefile
 
 
 # build output
-build
-!build/Makefile
-!build?Makefile.tmpl
+# build
+# !build/Makefile
+# !build?Makefile.tmpl
+build/*.o
+build/tag_art
