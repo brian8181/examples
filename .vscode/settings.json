@@ -1,3 +1,11 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "editor.accessibilitySupport": "off",
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.foldingStrategy": "indentation",
+    "debug.console.fontSize": 12,
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "markdown.preview.fontSize": 12,
+    "editor.fontWeight": "normal"
 }

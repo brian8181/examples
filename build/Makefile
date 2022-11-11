@@ -43,7 +43,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_mpi
+all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_exedir
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -66,8 +66,11 @@ boost_test:
 boost_regex:
 	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
 
-boost_mpi:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
+boost_exedir:
+	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
+
+# boost_mpi:
+# 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
 
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
@@ -136,7 +139,7 @@ clean:
 	rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
 	rm $(BUILDDIR)/std_array faq*
-	rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2
+	rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir
 
 # delete all auto generated files
 .PHONY: distclean
