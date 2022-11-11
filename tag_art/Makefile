@@ -1,13 +1,6 @@
-# MAKE TEMPLATE 06-02-2020 1
-# MAKE TEMPLATE 03-11-2021 1.1
-# MAKE TEMPLATE 05-22-2021 1.2
-# MAKE TEMPLATE 07-07-2021 1.3
-
-# RUN BEFORE autoreconf -ivfm
-# RUN BEFORE autoreconf -i
-
-MAKE_TEMPLATE = 1.3;
-BUILD_VERSION = 0.1.0
+# MAKE TEMPLATE 07-07-2021 l.o
+# MAKE_TEMPLATE = l.3
+# BUILD_VERSION = o.l.o
 
 prefix = /usr/local
 prefix = /usr/local
@@ -16,14 +9,8 @@ man1dir = $(mandir)/man1
 
 # Compiler settings - Can be customized.
 CXX = g++
-#CXXFLAGS = -Wall -std=c++11 -DDEBUG -g
-
-# HACK!
 CXXFLAGS = -Wall -std=c++11 -std=gnu++17
-#CXXFLAGS += -DDEBUG -g
 CXXFLAGS += -DDEBUG -ggdb
-
-
 # lib settings
 LDFLAGS = -ltag -L/usr/local/lib/ -lz
 INCLUDES= -I/usr/local/include/taglib/
