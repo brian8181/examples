@@ -43,7 +43,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test $(APPNAME)_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_exedir gtk_hello
+all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_exedir gtk_hello gtk_exmaple-0
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -88,7 +88,10 @@ map_insert:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/map_insert.cpp -o $(BUILDDIR)/map_insert
 
 gtk_hello:
-	gcc $(SRCDIR)/gtk_hello.c -o gtk_hello `pkg-config --cflags --libs gtk+-3.0`
+	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
+
+gtk_exmaple-0:
+	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
 # link
 $(APPNAME): $(APPNAME).o main.o  #END
@@ -104,13 +107,13 @@ main.o:
 
 ## auto gernerated here ##
 
-# link
-$(APPNAME)_test: $(APPNAME)_test.o
-	$(CXX) $(CXXFLAGS) $(INCLUDES) $(BUILDDIR)/$(APPNAME)_test.o $(BUILDDIR)/$(APPNAME).o $(LDFLAGS) -o $(BUILDDIR)/$(APPNAME)_test
+# # link
+# $(APPNAME)_test: $(APPNAME)_test.o
+# 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(BUILDDIR)/$(APPNAME)_test.o $(BUILDDIR)/$(APPNAME).o $(LDFLAGS) -o $(BUILDDIR)/$(APPNAME)_test
 
-# compile only
-$(APPNAME)_test.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/$(APPNAME)_test.cpp -o $(BUILDDIR)/$(APPNAME)_test.o
+# # compile only
+# $(APPNAME)_test.o:
+# 	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/$(APPNAME)_test.cpp -o $(BUILDDIR)/$(APPNAME)_test.o
 
 bash_color_test: bash_color_test.o
 	$(CXX) $(CXXFLAGS) $(BUILDDIR)/bash_color_test.o -o $(BUILDDIR)/bash_color_test
@@ -139,15 +142,15 @@ install: man
 # delete object files & app executable
 .PHONY: clean
 clean:
-	rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
-	rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
-	rm $(BUILDDIR)/std_array faq*
-	rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir
+	-rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
+	-rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
+	-rm $(BUILDDIR)/std_array faq*
+	-rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir
 
 # delete all auto generated files
 .PHONY: distclean
 distclean: clean
-	rm -f $(SRCDIR)/config.* $(SRCDIR)/Makefile $(SRCDIR)/Makefile.in $(SRCDIR)/INSTALL $(SRCDIR)/configure 
+	-rm -f $(SRCDIR)/config.* $(SRCDIR)/Makefile $(SRCDIR)/Makefile.in $(SRCDIR)/INSTALL $(SRCDIR)/configure 
 	# rm ../stamp-h1 ../aclocal.m4 ../compile ../install-sh ../libtool ../ltmain.sh ../stamp-h1 ../missing ../depcomp
 	# rm ../src/Makefile ../src/Makefile.in
 	# rm -rf ../autom4te.cache ../src/.deps ../src/.libs
