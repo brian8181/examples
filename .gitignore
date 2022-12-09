@@ -46,19 +46,10 @@ m4/lt~obsolete.m4
 # (meta build system like autotools, 
 # can automatically generate from config.status script
 # (which is called by configure script))
-build/*.o
-build/examples
-build/examples_test
-build/faq1.1
-build/faq1.2
-build/std_array
-build/read_lines
-build/boost_test
-build/iter_files
-build/bash_color_test
-build/dump_ifstream
-build/map_insert
-build/boost_regex
+# build output
+build
+!build/Makefile
+!build/Makefile.tmpl
 
 .vscode/*.log
 
