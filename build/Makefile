@@ -43,7 +43,8 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 dump_ifstream map_insert boost_exedir gtk_hello gtk_exmaple-0
+all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
+dump_ifstream map_insert boost_exedir gtk_hello template_ex1
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -87,11 +88,14 @@ dump_ifstream:
 map_insert:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/map_insert.cpp -o $(BUILDDIR)/map_insert
 
+template_ex1:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
+
 gtk_hello:
 	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
-gtk_exmaple-0:
-	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
+# gtk_exmaple-0:
+# 	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
 # link
 $(APPNAME): $(APPNAME).o main.o  #END
@@ -145,7 +149,7 @@ clean:
 	-rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	-rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
 	-rm $(BUILDDIR)/std_array faq*
-	-rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir
+	-rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir gtk_hello template_ex1
 
 # delete all auto generated files
 .PHONY: distclean
