@@ -44,7 +44,7 @@ debug: all
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
-dump_ifstream map_insert boost_exedir gtk_hello template_ex1
+dump_ifstream map_insert boost_exedir gtk_hello gtk_example-0 template_ex1
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -94,8 +94,8 @@ template_ex1:
 gtk_hello:
 	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
-# gtk_exmaple-0:
-# 	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
+gtk_example-0:
+	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
 # link
 $(APPNAME): $(APPNAME).o main.o  #END
@@ -148,8 +148,12 @@ install: man
 clean:
 	-rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	-rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
-	-rm $(BUILDDIR)/std_array faq*
-	-rm read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 boost_exedir gtk_hello template_ex1
+	-rm -f $(BUILDDIR)/std_array faq*
+	-rm -f $(BUILDDIR)/read_lines $(BUILDDIR)/iter_files $(BUILDDIR)/boost_test $(BUILDDIR)/boost_regex $(BUILDDIR)/regx_replace1
+	-rm -f $(BUILDDIR)/sub_match $(BUILDDIR)/sub_match2 $(BUILDDIR)/boost_exedir  $(BUILDDIR)/dump_ifstream $(BUILDDIR)/map_insert
+	-rm -f $(BUILDDIR)/gtk_hello 
+	-rm -f $(BUILDDIR)/gtk_example-0
+	-rm -f $(BUILDDIR)/template_ex1
 
 # delete all auto generated files
 .PHONY: distclean
