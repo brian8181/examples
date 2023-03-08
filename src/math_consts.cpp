@@ -46,4 +46,10 @@ int main()
         << std::setprecision(std::numeric_limits<long double>::digits10 + 1)
         << egamma_v<long double> << '\n'
         << "γ with " << γ.length() - 1 << " digits precision = " << γ << '\n';
+
+        std::cout 
+        << "e = " 
+        << e << '\n'
+        << "log10 = "
+        << log10(10) << '\n';  
 }

@@ -174,6 +174,8 @@ clean:
 	-rm -f $(BUILDDIR)/gtk_hello 
 	-rm -f $(BUILDDIR)/gtk_example-0
 	-rm -f $(BUILDDIR)/template_ex1
+	-rm -f $(BUILDDIR)/string_view_test
+	-rm -f $(BUILDDIR)/math_consts
 
 # delete all auto generated files
 .PHONY: distclean
