@@ -20,13 +20,16 @@ CXX = g++
 
 # HACK!
 CXXFLAGS = -Wall -std=c++11 -std=gnu++17
+#CXXFLAGS = -Wall -std=c++20
+#CXXFLAGS = -Wall -std=gnu++2b
 #CXXFLAGS += -DDEBUG -g
 CXXFLAGS += -DDEBUG -ggdb
 
 
 # lib settings
-LDFLAGS = -static -lcppunit -L/usr/local/lib/
-INCLUDES = -I/usr/local/include/cppunit/
+# cppunit IS NOT USED!
+# LDFLAGS = -static -lcppunit -L/usr/local/lib/
+# INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
 
 # Makefile settings - Can be customized.
@@ -44,7 +47,10 @@ debug: all
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
-dump_ifstream map_insert boost_exedir gtk_hello gtk_example-0 template_ex1
+dump_ifstream map_insert boost_exedir template_ex1
+
+#all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
+#dump_ifstream map_insert boost_exedir gtk_hello gtk_example-0 template_ex1
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
@@ -96,6 +102,11 @@ gtk_hello:
 
 gtk_example-0:
 	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
+
+INCLUDES = -I/home/brian/src/fmt-9.1.0/include
+
+stl_format:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/stl_format.cpp -o $(BUILDDIR)/stl_format
 
 # link
 $(APPNAME): $(APPNAME).o main.o  #END
