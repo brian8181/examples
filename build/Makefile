@@ -31,6 +31,8 @@ CXXFLAGS += -DDEBUG -ggdb
 # LDFLAGS = -static -lcppunit -L/usr/local/lib/
 # INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
+LDFLAGS = -static -llibfmt -L/usr/local/lib64/
+INCLUDES = -I/usr/local/include/fmt/
 
 # Makefile settings - Can be customized.
 APPNAME = examples
@@ -47,7 +49,7 @@ debug: all
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
-dump_ifstream map_insert boost_exedir template_ex1
+dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 string_view_test
 
 #all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
 #dump_ifstream map_insert boost_exedir gtk_hello gtk_example-0 template_ex1
@@ -103,10 +105,14 @@ gtk_hello:
 gtk_example-0:
 	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
-INCLUDES = -I/home/brian/src/fmt-9.1.0/include
-
 stl_format:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/stl_format.cpp -o $(BUILDDIR)/stl_format
+
+fmtlib.ex1:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp -o $(BUILDDIR)/fmtlib.ex1
+
+string_view_test:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/string_view_test.cpp -o $(BUILDDIR)/string_view_test
 
 # link
 $(APPNAME): $(APPNAME).o main.o  #END
