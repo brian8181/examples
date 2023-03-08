@@ -48,7 +48,7 @@ debug: all
 
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
-all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
+all: std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
 dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 string_view_test math_consts
 
 #all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
@@ -118,34 +118,6 @@ string_view_test:
 
 math_consts:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/math_consts.cpp -o $(BUILDDIR)/math_consts
-
-# link
-$(APPNAME): $(APPNAME).o main.o  #END
-	 $(CXX) $(CXXFLAGS) $(BUILDDIR)/$(APPNAME).o $(BUILDDIR)/main.o  -o $(BUILDDIR)/$(APPNAME)
-
-# compile only
-$(APPNAME).o:
-	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/$(APPNAME).$(EXT) -o $(BUILDDIR)/$(APPNAME).o
-	
-main.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/main.$(EXT) -o $(BUILDDIR)/main.o
-	# $(CXX) $(CXXFLAGS) $(INCLUDES) $(BUILDDIR)/$(APPNAME).o $(LDFLAGS) -o $(BUILDDIR)/$(APPNAME)_test
-
-## auto gernerated here ##
-
-# # link
-# $(APPNAME)_test: $(APPNAME)_test.o
-# 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(BUILDDIR)/$(APPNAME)_test.o $(BUILDDIR)/$(APPNAME).o $(LDFLAGS) -o $(BUILDDIR)/$(APPNAME)_test
-
-# # compile only
-# $(APPNAME)_test.o:
-# 	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/$(APPNAME)_test.cpp -o $(BUILDDIR)/$(APPNAME)_test.o
-
-bash_color_test: bash_color_test.o
-	$(CXX) $(CXXFLAGS) $(BUILDDIR)/bash_color_test.o -o $(BUILDDIR)/bash_color_test
-
-bash_color_test.o:
-	$(CXX) $(CXXFLAGS) -c $(SRCDIR)/bash_color_test.cpp -o $(BUILDDIR)/bash_color_test.o
 
 # install man pages
 .PHONY: man
