@@ -111,8 +111,7 @@ stl_format:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/stl_format.cpp -o $(BUILDDIR)/stl_format
 
 fmtlib.ex1:
-	@echo "MAKE RULE - fmtlib: disabled"
-	#$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp -o $(BUILDDIR)/fmtlib.ex1
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o $(BUILDDIR)/fmtlib.ex1
 
 string_view_test:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/string_view_test.cpp -o $(BUILDDIR)/string_view_test
@@ -179,6 +178,7 @@ clean:
 	-rm -f $(BUILDDIR)/template_ex1
 	-rm -f $(BUILDDIR)/string_view_test
 	-rm -f $(BUILDDIR)/math_consts
+	-rm -f $(BUILDDIR)/fmtlib.ex1
 
 # delete all auto generated files
 .PHONY: distclean

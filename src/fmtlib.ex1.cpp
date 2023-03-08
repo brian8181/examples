@@ -1,3 +1,4 @@
+#include <iostream>
 #include <type_traits>
 #include <fmt/format.h>
 
@@ -23,4 +24,5 @@ int main() {
   B b;
   A& a = b;
   fmt::print("{}", a); // prints "B"
+  std::cout << std::endl;
 }
