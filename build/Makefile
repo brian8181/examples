@@ -100,16 +100,19 @@ template_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
 
 gtk_hello:
-	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
+	@secho "MAKE RULE - gtk_hello: disabled"
+	#gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
 gtk_example-0:
-	gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
+	@echo "MAKE RULE - gtk_example-0: disabled"
+	#gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
 stl_format:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/stl_format.cpp -o $(BUILDDIR)/stl_format
 
 fmtlib.ex1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp -o $(BUILDDIR)/fmtlib.ex1
+	@echo "MAKE RULE - fmtlib: disabled"
+	#$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp -o $(BUILDDIR)/fmtlib.ex1
 
 string_view_test:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/string_view_test.cpp -o $(BUILDDIR)/string_view_test
