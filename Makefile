@@ -37,10 +37,10 @@ INCLUDES = -I/usr/local/include/fmt/
 # Makefile settings - Can be customized.
 APPNAME = examples
 EXT = cpp
-ROOTDIR  = ..
-BUILDDIR = .
+ROOTDIR  = .
+BUILDDIR = ./build
 SRCDIR = $(ROOTDIR)/src
-OBJDIR = .
+OBJDIR = ./build
 
 # compile & link for debug
 #debug: CXXFLAGS += -DDEBUG -g
