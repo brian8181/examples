@@ -31,8 +31,8 @@ CXXFLAGS += -DDEBUG -ggdb
 # LDFLAGS = -static -lcppunit -L/usr/local/lib/
 # INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
-LDFLAGS = -static -llibfmt -L/usr/local/lib64/
-INCLUDES = -I/usr/local/include/fmt/
+#LDFLAGS = -static -llibfmt -L/usr/local/lib64/
+#INCLUDES = -I/usr/local/include/fmt/
 
 # Makefile settings - Can be customized.
 APPNAME = examples
