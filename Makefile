@@ -2,6 +2,7 @@
 # MAKE TEMPLATE 03-11-2021 1.1
 # MAKE TEMPLATE 05-22-2021 1.2
 # MAKE TEMPLATE 07-07-2021 1.3
+# MAKE TEMPLATE 03-09-2023 1.6
 
 # RUN BEFORE autoreconf -ivfm
 # RUN BEFORE autoreconf -i
@@ -17,8 +18,6 @@ man1dir = $(mandir)/man1
 # Compiler settings - Can be customized.
 CXX = g++
 #CXXFLAGS = -Wall -std=c++11 -DDEBUG -g
-
-# HACK!
 #CXXFLAGS = -Wall -std=c++11 -std=gnu++17
 CXXFLAGS = -Wall -std=c++20
 #CXXFLAGS = -Wall -std=gnu++2b
