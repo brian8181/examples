@@ -1,12 +1,7 @@
-# MAKE TEMPLATE 06-02-2020 1
-# MAKE TEMPLATE 03-11-2021 1.1
-# MAKE TEMPLATE 05-22-2021 1.2
-# MAKE TEMPLATE 07-07-2021 1.3
-# MAKE TEMPLATE 03-09-2023 1.6
+# BUILD 03-09-2023
 
 # RUN BEFORE autoreconf -ivfm
 # RUN BEFORE autoreconf -i
-
 MAKE_TEMPLATE = 1.3;
 BUILD_VERSION = 0.1.0
 
@@ -23,7 +18,6 @@ CXXFLAGS = -Wall -std=c++20
 #CXXFLAGS = -Wall -std=gnu++2b
 #CXXFLAGS += -DDEBUG -g
 CXXFLAGS += -DDEBUG -ggdb
-
 
 # lib settings
 # cppunit IS NOT USED!
@@ -48,7 +42,7 @@ debug: all
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 all: std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
-dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 string_view_test math_consts
+dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 fmtlib.play string_view_test math_consts
 
 #all: $(APPNAME) bash_color_test std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match2 \
 #dump_ifstream map_insert boost_exedir gtk_hello gtk_example-0 template_ex1
@@ -111,6 +105,9 @@ stl_format:
 
 fmtlib.ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o $(BUILDDIR)/fmtlib.ex1
+
+fmtlib.play:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BUILDDIR)/fmtlib.play
 
 string_view_test:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/string_view_test.cpp -o $(BUILDDIR)/string_view_test
