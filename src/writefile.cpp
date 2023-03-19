@@ -3,9 +3,10 @@
 #include <fstream>
 using namespace std;
 
-int main () {
+int main () 
+{
   ofstream myfile;
-  myfile.open ("example.txt");
+  myfile.open ("/example.txt");
   myfile << "Writing this to a file.\n";
   myfile.close();
   return 0;

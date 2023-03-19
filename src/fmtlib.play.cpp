@@ -15,4 +15,10 @@ int main()
     fmt::print("I'd rather be {1} than {0}.", "right", "happy");
     cout << endl;
 
+    fmt::print("Don't {}\n", "panic");
+
+    // more examples
+    double x = 1.123456789;
+    fmt::print("x equal -> {:+f}\n", x);
+
 }
