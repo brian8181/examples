@@ -34,6 +34,8 @@ ROOTDIR  = .
 BUILDDIR = ./build
 SRCDIR = $(ROOTDIR)/src
 OBJDIR = ./build
+BOOSTDIR = /home/bkp/src
+SRC_ROOT = ../$ROOTDIR
 
 # compile & link for debug
 #debug: CXXFLAGS += -DDEBUG -g
@@ -63,13 +65,13 @@ iter_files:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
 
 boost_test:
-	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
+	$(CXX) $(CXXFLAGS) -I $(BOOSTDIR)/boost_1_79_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
 
 boost_regex:
-	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+	$(CXX) $(CXXFLAGS) -I $(BOOSTDIR)/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
 
 boost_exedir:
-	$(CXX) $(CXXFLAGS) -I /home/brian/src/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
+	$(CXX) $(CXXFLAGS) -I $(BOOSTDIR)/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
 
 # boost_mpi:
 # 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
