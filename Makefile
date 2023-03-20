@@ -94,7 +94,7 @@ template_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
 
 gtk_hello:
-	@secho "MAKE RULE - gtk_hello: disabled"
+	@echo "MAKE RULE - gtk_hello: disabled"
 	#gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
 gtk_example-0:
@@ -139,7 +139,7 @@ install: man
 clean:
 	-rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
 	-rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
-	-rm -f $(BUILDDIR)/std_array faq*
+	-rm -f $(BUILDDIR)/std_array
 	-rm -f $(BUILDDIR)/read_lines $(BUILDDIR)/iter_files $(BUILDDIR)/boost_test $(BUILDDIR)/boost_regex $(BUILDDIR)/regx_replace1
 	-rm -f $(BUILDDIR)/sub_match $(BUILDDIR)/sub_match2 $(BUILDDIR)/boost_exedir  $(BUILDDIR)/dump_ifstream $(BUILDDIR)/map_insert
 	-rm -f $(BUILDDIR)/gtk_hello 
@@ -147,7 +147,10 @@ clean:
 	-rm -f $(BUILDDIR)/template_ex1
 	-rm -f $(BUILDDIR)/string_view_test
 	-rm -f $(BUILDDIR)/math_consts
+	-rm -f $(BUILDDIR)/faq1.1
+	-rm -f $(BUILDDIR)/faq1.2
 	-rm -f $(BUILDDIR)/fmtlib.ex1
+	-rm -f $(BUILDDIR)/fmtlib.play
 
 # delete all auto generated files
 .PHONY: distclean
