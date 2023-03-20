@@ -94,7 +94,7 @@ template_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
 
 gtk_hello:
-	@secho "MAKE RULE - gtk_hello: disabled"
+	@echo "MAKE RULE - gtk_hello: disabled"
 	#gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
 gtk_example-0:
