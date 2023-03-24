@@ -47,6 +47,9 @@ all:: std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_
 all:: dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 fmtlib.play string_view_test math_consts
 #all:: boost_exedir gtk_hello gtk_example-0 template_ex1
 
+test:
+	ls $? $(SRCDIR)
+
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
 
@@ -150,7 +153,7 @@ clean:
 	# -rm -f $(BUILDDIR)/faq1.1
 	# -rm -f $(BUILDDIR)/faq1.2
 	# -rm -f $(BUILDDIR)/fmtlib.ex1
-	# -rm -f $(BUILDDIR)/fmtlib.play
+	# -rm -f $(BUILDDIR)/fmtlib.playn
 
 # delete all auto generated files
 .PHONY: distclean
