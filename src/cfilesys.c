@@ -16,6 +16,11 @@ int main(int argc, char** argv)
     const char* dir_name = "/home/brian";
     DIR *DirectoryPointer;
     DirectoryPointer = opendir(dir_name);
+    struct dirent *dir_ent;
+    for(dir_ent = readdir(DirectoryPointer); dir_ent != NULL;  dir_ent = readdir(DirectoryPointer))
+    {
+        printf("%s\n", dir_ent->d_name);
+    }
     ret = closedir(DirectoryPointer);
     
     return ret;
