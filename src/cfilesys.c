@@ -5,12 +5,12 @@ int main(int argc, char** argv)
 {
     char* path = "/home/brian/";
     //printf("%s", path);
- 
     int ret = chdir(path);
-    
-    char buffer[256];
-    getcwd(buffer, 256);
+    size_t bsize = 256;
+    char buffer[bsize];
 
+    getcwd(buffer, bsize);
     printf("%s\n", buffer);
+    
     return ret;
 }
