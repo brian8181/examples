@@ -12,6 +12,8 @@ man1dir = $(mandir)/man1
 
 # Compiler settings - Can be customized.
 CXX = g++
+CC = gcc
+CFLAGS = -std=c99
 #CXXFLAGS = -Wall -std=c++11 -DDEBUG -g
 #CXXFLAGS = -Wall -std=c++11 -std=gnu++17
 CXXFLAGS = -Wall -std=c++20
@@ -43,10 +45,18 @@ debug: all
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 
-all:: std_array faq1.1 faq1.2 read_lines iter_files boost_test boost_regex regx_replace1 sub_match sub_match sub_match2
-all:: dump_ifstream map_insert boost_exedir template_ex1 fmtlib.ex1 fmtlib.play string_view_test math_consts
-all:: cfilesys
-#all:: boost_exedir gtk_hello gtk_example-0 template_ex1
+all:: std_array 
+all:: faq1.1 faq1.2 
+all:: read_lines iter_files
+all::  boost_test boost_regex boost_exedir
+all:: regx_replace1 sub_match sub_match sub_match2
+all:: dump_ifstream map_insert
+all:: template_ex1 
+all:: fmtlib.ex1 fmtlib.play 
+all:: string_view_test math_consts
+all:: cfilesys 
+all:: istream
+#all:: gtk_hello gtk_example-0
 
 test:
 	ls $? $(SRCDIR)
@@ -120,7 +130,10 @@ math_consts:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/math_consts.cpp -o $(BUILDDIR)/math_consts
 
 cfilesys:
-	gcc $(SRCDIR)/cfilesys.c -o $(BUILDDIR)/cfilesys
+	$(CC) $(CFLAGS) $(SRCDIR)/cfilesys.c -o $(BUILDDIR)/cfilesys
+
+istream:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/istream -o $(BUILDDIR)/istream
 
 # install man pages
 .PHONY: man
