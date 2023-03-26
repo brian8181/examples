@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
 
@@ -22,6 +23,16 @@ int main(int argc, char** argv)
         printf("%s\n", dir_ent->d_name);
     }
     ret = closedir(DirectoryPointer);
-    
+
+    // int n = 10;
+    // char pa[10];
+    // char* pc = &pa[0];
+    // itoa(n, pc, 10);
+    // printf("%s\n", pa);
+
+    char* str = "10";
+    int i = atoi(str);    
+    printf("%d\n", i);
+
     return ret;
 }
