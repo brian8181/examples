@@ -132,6 +132,9 @@ math_consts:
 cfilesys:
 	$(CC) $(CFLAGS) $(SRCDIR)/cfilesys.c -o $(BUILDDIR)/cfilesys
 
+atoi_itoa:
+	$(CC) $(CFLAGS) $(SRCDIR)/atoi_itoa.c -o $(BUILDDIR)/atoi_itoa
+
 istream:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/istream -o $(BUILDDIR)/istream
 
