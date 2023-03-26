@@ -42,35 +42,26 @@ int main(int argc, char *argv[])
 	{
 		// read the image file
 		TagLib::MP4::CoverArt coverArt((TagLib::MP4::CoverArt::Format)0x0D, imageFile.data());
-
 		// read the mp4 file
 		TagLib::MP4::File audioFile(argv[1]);
-
 		// get the tag ptr
 		TagLib::MP4::Tag *tag = audioFile.tag();
-
 		// get the items map
 		TagLib::MP4::ItemListMap itemsListMap = tag->itemListMap();
-
 		// create cover art list
 		TagLib::MP4::CoverArtList coverArtList;
-
 		// append instance
 		coverArtList.append(coverArt);
-
 		// convert to item
 		TagLib::MP4::Item coverItem(coverArtList);
-
 		// add item to map
 		itemsListMap.insert("covr", coverItem);
-
 		tag->save();
 		// audioFile.save();
 	}
 	else if (fileType == "MP3")
 	{
 		TagLib::MPEG::File audioFile(argv[1]);
-
 		TagLib::ID3v2::Tag *tag = audioFile.ID3v2Tag(true);
 		TagLib::ID3v2::AttachedPictureFrame *frame = new TagLib::ID3v2::AttachedPictureFrame;
 

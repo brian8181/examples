@@ -54,7 +54,7 @@ all:: dump_ifstream map_insert
 all:: template_ex1 
 all:: fmtlib.ex1 fmtlib.play 
 all:: string_view_test math_consts
-all:: cfilesys 
+all:: cfilesys atoi_itoa
 all:: istream
 #all:: gtk_hello gtk_example-0
 
