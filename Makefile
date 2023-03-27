@@ -55,7 +55,7 @@ all:: template_ex1
 all:: fmtlib.ex1 fmtlib.play 
 all:: string_view_test math_consts
 all:: cfilesys atoi_itoa
-all:: istream
+all:: istream threads_ex1
 #all:: gtk_hello gtk_example-0
 
 test:
@@ -136,7 +136,10 @@ atoi_itoa:
 	$(CC) $(CFLAGS) $(SRCDIR)/atoi_itoa.c -o $(BUILDDIR)/atoi_itoa
 
 istream:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/istream -o $(BUILDDIR)/istream
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/istream.cpp -o $(BUILDDIR)/istream
+
+threads_ex1:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/threads_ex1.cpp -o $(BUILDDIR)/threads_ex1
 
 # install man pages
 .PHONY: man
