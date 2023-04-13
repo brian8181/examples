@@ -48,7 +48,9 @@ debug: all
 all:: std_array 
 all:: faq1.1 faq1.2 
 all:: read_lines iter_files
-all::  boost_test boost_regex boost_exedir regex_replace_example
+all:: boost_test boost_regex boost_exedir 
+all:: regex_replace_example
+all:: sample_formats
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
 all:: template_ex1 
@@ -96,6 +98,9 @@ regex_replace_example: regex_replace_example.o
 
 regex_replace_example.o:
 	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
+
+sample_formats:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
 
 sub_match:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
