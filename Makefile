@@ -51,6 +51,7 @@ all:: read_lines iter_files
 all:: boost_test boost_regex boost_exedir 
 all:: regex_replace_example
 all:: sample_formats
+all:: sample_userType
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
 all:: template_ex1 
@@ -102,6 +103,9 @@ regex_replace_example.o:
 sample_formats:
 	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
 
+sample_userType:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
+	
 sub_match:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
 
