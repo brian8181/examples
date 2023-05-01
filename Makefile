@@ -6,7 +6,6 @@ MAKE_TEMPLATE = 1.3;
 BUILD_VERSION = 0.1.0
 
 prefix = /usr/local
-prefix = /usr/local
 mandir = $(prefix)/share/man
 man1dir = $(mandir)/man1
 
@@ -14,12 +13,10 @@ man1dir = $(mandir)/man1
 CXX = g++
 CC = gcc
 CFLAGS = -std=c99
-#CXXFLAGS = -Wall -std=c++11 -DDEBUG -g
-#CXXFLAGS = -Wall -std=c++11 -std=gnu++17
 CXXFLAGS = -Wall -std=c++20
-#CXXFLAGS = -Wall -std=gnu++2b
-#CXXFLAGS += -DDEBUG -g
 CXXFLAGS += -DDEBUG -ggdb
+#CXXFLAGS = -Wall -std=c++11 -std=gnu++17
+#CXXFLAGS += -DDEBUG -g
 
 # lib settings
 # cppunit IS NOT USED!
@@ -40,10 +37,10 @@ OBJDIR = ./build
 
 # compile & link for debug
 #debug: CXXFLAGS += -DDEBUG -g
-debug: all
-
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
+
+debug: all
 
 all:: std_array 
 all:: faq1.1 faq1.2 
@@ -122,8 +119,8 @@ template_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
 
 gtk_hello:
-	@echo "MAKE RULE - gtk_hello: disabled"
-	#gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
+	#@echo "MAKE RULE - gtk_hello: disabled"
+	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
 gtk_example-0:
 	@echo "MAKE RULE - gtk_example-0: disabled"
