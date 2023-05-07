@@ -45,10 +45,8 @@ debug: all
 all:: std_array 
 all:: faq1.1 faq1.2 
 all:: read_lines iter_files
-all:: boost_test boost_regex boost_exedir 
-all:: regex_replace_example
-all:: sample_formats
-all:: sample_userType
+all:: boost_test boost_regex boost_exedir boost_parse_xml boost_io bfs-example
+#all:: bfs-example2
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
 all:: template_ex1 
@@ -87,6 +85,18 @@ boost_exedir:
 
 # boost_mpi:
 # 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
+
+boost_parse_xml:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/boost_parse_xml.cpp -o $(BUILDDIR)/boost_parse_xml
+
+boost_io:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/boost_io.cpp -o $(BUILDDIR)/boost_io
+
+bfs-example:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/bfs-example.cpp -o $(BUILDDIR)/bfs-example
+
+bfs-example2:
+	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/bfs-example2.cpp -o $(BUILDDIR)/bfs-example2
 
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
