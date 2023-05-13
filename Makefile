@@ -45,7 +45,8 @@ debug: all
 all:: std_array 
 all:: faq1.1 faq1.2 
 all:: read_lines iter_files
-all:: boost_test boost_regex boost_exedir boost_parse_xml boost_io bfs-example
+all:: boost_test boost_regex boost_exedir boost_io bfs-example
+all:: boost_parse_xml
 #all:: bfs-example2
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
@@ -55,6 +56,7 @@ all:: string_view_test math_consts
 all:: cfilesys atoi_itoa
 all:: istream threads_ex1
 #all:: gtk_hello gtk_example-0
+all:: valarray_ex
 
 test:
 	ls $? $(SRCDIR)
@@ -75,43 +77,42 @@ iter_files:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
 
 boost_test:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_test
-
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/ $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_t
 boost_regex:
-	#$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+	#$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
 
 boost_exedir:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
 
 # boost_mpi:
 # 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
 
 boost_parse_xml:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/boost_parse_xml.cpp -o $(BUILDDIR)/boost_parse_xml
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_parse_xml.cpp -o $(BUILDDIR)/boost_parse_xml
 
 boost_io:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/boost_io.cpp -o $(BUILDDIR)/boost_io
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_io.cpp -o $(BUILDDIR)/boost_io
 
 bfs-example:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/bfs-example.cpp -o $(BUILDDIR)/bfs-example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/bfs-example.cpp -o $(BUILDDIR)/bfs-example
 
 bfs-example2:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/src/boost_1_79_0 $(SRCDIR)/bfs-example2.cpp -o $(BUILDDIR)/bfs-example2
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/bfs-example2.cpp -o $(BUILDDIR)/bfs-example2
 
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
 
 regex_replace_example: regex_replace_example.o
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(BUILDDIR)/regex_replace_example.o -o $(BUILDDIR)/regex_replace_example
+	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(BUILDDIR)/regex_replace_example.o -o $(BUILDDIR)/regex_replace_example
 
 regex_replace_example.o:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
 
 sample_formats:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
+	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
 
 sample_userType:
-	$(CXX) $(CXXFLAGS) -I $(USR_SRCDIR)/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
+	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
 	
 sub_match:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
@@ -162,6 +163,9 @@ istream:
 
 threads_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/threads_ex1.cpp -o $(BUILDDIR)/threads_ex1
+
+valarray_ex:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/valarray_ex.cpp -o $(BUILDDIR)/valarray_ex
 
 # install man pages
 .PHONY: man
