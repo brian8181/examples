@@ -19,8 +19,7 @@ CXXFLAGS += -DDEBUG -ggdb
 #CXXFLAGS += -DDEBUG -g
 
 # lib settings
-# cppunit IS NOT USED!
-# LDFLAGS = -static -lcppunit -L/usr/local/lib/
+# cppunit IS NOT USED!(USR_SRCDIR)/
 # INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
 #LDFLAGS = -static -llibfmt -L/usr/local/lib64/
@@ -30,7 +29,8 @@ CXXFLAGS += -DDEBUG -ggdb
 APPNAME = examples
 EXT = cpp
 ROOTDIR  = .
-USR_SRCDIR = ../$(ROOTDIR)
+# install correctly or do this /usr/local/lib?
+#USR_SRCDIR = ../$(ROOTDIR)
 BUILDDIR = ./build
 SRCDIR = $(ROOTDIR)/src
 OBJDIR = ./build
