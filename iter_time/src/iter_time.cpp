@@ -19,6 +19,7 @@ int parse_options(int argc, char* argv[])
 	int j = 0;
 	int len = 3;
 	long i = 0;
+	// 30,000,000,000
 	long llen = 3l*10l*1000000000l; // 10l*10l*1000l*1000000l;
 	time_t beg;
 	time_t end;
