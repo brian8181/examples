@@ -57,6 +57,7 @@ all:: cfilesys atoi_itoa
 all:: istream threads_ex1
 #all:: gtk_hello gtk_example-0
 all:: valarray_ex
+all:: pipe_timeout
 
 test:
 	ls $? $(SRCDIR)
@@ -166,6 +167,9 @@ threads_ex1:
 
 valarray_ex:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/valarray_ex.cpp -o $(BUILDDIR)/valarray_ex
+
+pipe_timeout:
+	gcc $(SRCDIR)/pipe_timeout.c -o $(BUILDDIR)/pipe_timeout
 
 # install man pages
 .PHONY: man
