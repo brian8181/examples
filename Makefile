@@ -47,6 +47,7 @@ all:: faq1.1 faq1.2
 all:: read_lines iter_files
 all:: boost_test boost_regex boost_exedir boost_io bfs-example
 all:: boost_parse_xml
+all:: boost_circular_buffer
 #all:: bfs-example2
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
@@ -99,6 +100,9 @@ bfs-example:
 
 bfs-example2:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/bfs-example2.cpp -o $(BUILDDIR)/bfs-example2
+
+boost_circular_buffer::
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_circular_buffer.cpp -o $(BUILDDIR)/boost_circular_buffer
 
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
