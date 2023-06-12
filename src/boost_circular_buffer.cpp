@@ -10,6 +10,9 @@
 */
 
 #include <boost/circular_buffer.hpp>
+#include <iostream>
+
+using namespace std;
 
 //] [/circular_buffer_example_1]
 
@@ -46,6 +49,16 @@
 
     // Leaving only one element with value = 4.
     int d = cb[0];  // d == 4
+
+    cout << d << endl;
+
+    boost::circular_buffer<int>::iterator end = cb.begin();
+
+    for(boost::circular_buffer<int>::iterator iter = cb.begin(); iter != end; ++iter)
+    {
+        cout << *iter << endl;
+    }
+    
 
 //] [/circular_buffer_example_2]
     return 0;
