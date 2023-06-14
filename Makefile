@@ -59,6 +59,7 @@ all:: istream threads_ex1
 #all:: gtk_hello gtk_example-0
 all:: valarray_ex
 all:: pipe_timeout
+all:: signal_ex3
 
 test:
 	ls $? $(SRCDIR)
@@ -174,6 +175,9 @@ valarray_ex:
 
 pipe_timeout:
 	gcc $(SRCDIR)/pipe_timeout.c -o $(BUILDDIR)/pipe_timeout
+
+signal_ex3:
+	gcc $(SRCDIR)/signal_ex3.c -o $(BUILDDIR)/signal_ex3
 
 # install man pages
 .PHONY: man
