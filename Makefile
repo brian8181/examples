@@ -60,6 +60,12 @@ all:: istream threads_ex1
 all:: valarray_ex
 all:: pipe_timeout
 all:: signal_ex3
+all:: vla_basic
+all:: vla_sizeof
+# link error!
+#all:: vla_pass_vla
+all:: vla_pass_mutivla
+all:: vla_typedef
 
 test:
 	ls $? $(SRCDIR)
@@ -178,6 +184,21 @@ pipe_timeout:
 
 signal_ex3:
 	gcc $(SRCDIR)/signal_ex3.c -o $(BUILDDIR)/signal_ex3
+
+vla_basic:
+	gcc $(SRCDIR)/vla_basic.c -o $(BUILDDIR)/vla_basic
+
+vla_sizeof:
+	gcc $(SRCDIR)/vla_sizeof.c -o $(BUILDDIR)/vla_sizeof
+
+vla_pass_vla:
+	gcc $(SRCDIR)/vla_pass_vla.c -o $(BUILDDIR)/vla_pass_vla
+
+vla_pass_mutivla:
+	gcc $(SRCDIR)/vla_pass_mutivla.c -o $(BUILDDIR)/vla_pass_mutivla
+
+vla_typedef:
+	gcc $(SRCDIR)/vla_typedef.c -o $(BUILDDIR)/vla_typedef
 
 # install man pages
 .PHONY: man
