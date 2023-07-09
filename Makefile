@@ -66,6 +66,8 @@ all:: vla_sizeof
 #all:: vla_pass_vla
 all:: vla_pass_mutivla
 all:: vla_typedef
+# link error!
+#all:: itoa_example
 
 test:
 	ls $? $(SRCDIR)
@@ -199,6 +201,9 @@ vla_pass_mutivla:
 
 vla_typedef:
 	gcc $(SRCDIR)/vla_typedef.c -o $(BUILDDIR)/vla_typedef
+
+itoa_example:
+	gcc $(SRCDIR)/itoa_example.c -o $(BUILDDIR)/itoa_example
 
 # install man pages
 .PHONY: man
