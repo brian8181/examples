@@ -68,6 +68,7 @@ all:: vla_pass_mutivla
 all:: vla_typedef
 # link error!
 #all:: itoa_example
+all:: signals_ex1
 
 test:
 	ls $? $(SRCDIR)
@@ -204,6 +205,9 @@ vla_typedef:
 
 itoa_example:
 	gcc $(SRCDIR)/itoa_example.c -o $(BUILDDIR)/itoa_example
+
+signals_ex1:
+	gcc $(SRCDIR)/signals_ex1.c -o $(BUILDDIR)/signals_ex1
 
 # install man pages
 .PHONY: man
