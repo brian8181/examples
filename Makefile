@@ -69,6 +69,7 @@ all:: vla_typedef
 # link error!
 #all:: itoa_example
 all:: signals_ex1
+all:: std_hex
 
 test:
 	ls $? $(SRCDIR)
@@ -208,6 +209,9 @@ itoa_example:
 
 signals_ex1:
 	gcc $(SRCDIR)/signals_ex1.c -o $(BUILDDIR)/signals_ex1
+
+std_hex:
+	g++ $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex
 
 # install man pages
 .PHONY: man
