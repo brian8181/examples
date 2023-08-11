@@ -70,6 +70,7 @@ all:: vla_typedef
 #all:: itoa_example
 all:: signals_ex1
 all:: std_hex
+all:: std_find_string
 
 test:
 	ls $? $(SRCDIR)
@@ -212,6 +213,9 @@ signals_ex1:
 
 std_hex:
 	g++ $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex
+
+std_find_string:
+	g++ $(SRCDIR)/std_find_string.cpp -o $(BUILDDIR)/std_find_string
 
 # install man pages
 .PHONY: man
