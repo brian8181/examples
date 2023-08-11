@@ -71,6 +71,7 @@ all:: vla_typedef
 all:: signals_ex1
 all:: std_hex
 all:: std_find_string
+all:: std_find
 
 test:
 	ls $? $(SRCDIR)
@@ -216,6 +217,9 @@ std_hex:
 
 std_find_string:
 	g++ $(SRCDIR)/std_find_string.cpp -o $(BUILDDIR)/std_find_string
+
+std_find:
+	g++ $(SRCDIR)/std_find.cpp -o $(BUILDDIR)/std_find
 
 # install man pages
 .PHONY: man
