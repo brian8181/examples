@@ -69,6 +69,7 @@ all:: vla_typedef
 # link error!
 #all:: itoa_example
 all:: signals_ex1
+all:: signals_ex4
 all:: std_hex
 all:: std_find_string
 all:: std_find
@@ -211,6 +212,9 @@ itoa_example:
 
 signals_ex1:
 	gcc $(SRCDIR)/signals_ex1.c -o $(BUILDDIR)/signals_ex1
+
+signals_ex4:
+	gcc $(SRCDIR)/signals_ex4.c -o $(BUILDDIR)/signals_ex4
 
 std_hex:
 	g++ $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex

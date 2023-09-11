@@ -7,7 +7,9 @@ void sig_handler(int signum){
   printf("\nInside handler function\n");
 }
 
-int main(){
+int main()
+{
+
   signal(SIGINT,sig_handler); // Register signal handler
   for(int i=1;;i++){    //Infinite loop
     printf("%d : Inside main function\n",i);
