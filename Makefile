@@ -73,6 +73,7 @@ all:: signals_ex4
 all:: std_hex
 all:: std_find_string
 all:: std_find
+all:: dice_unifrom_distorbution
 
 test:
 	ls $? $(SRCDIR)
@@ -224,6 +225,9 @@ std_find_string:
 
 std_find:
 	g++ $(SRCDIR)/std_find.cpp -o $(BUILDDIR)/std_find
+
+dice_unifrom_distorbution:
+	g++ $(SRCDIR)/dice_unifrom_distorbution.cpp -o $(BUILDDIR)/dice_unifrom_distorbution
 
 # install man pages
 .PHONY: man
