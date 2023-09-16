@@ -74,6 +74,7 @@ all:: std_hex
 all:: std_find_string
 all:: std_find
 all:: dice_unifrom_distribution
+all:: get_current_dir
 
 test:
 	ls $? $(SRCDIR)
@@ -228,6 +229,9 @@ std_find:
 
 dice_unifrom_distribution:
 	g++ $(SRCDIR)/dice_unifrom_distribution.cpp -o $(BUILDDIR)/dice_unifrom_distribution
+
+get_current_dir:
+	g++ $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
 
 # install man pages
 .PHONY: man
