@@ -235,7 +235,7 @@ get_current_dir:
 	g++ $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
 
 stringstream_ex1:
-	g++ $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1.cpp
+	g++ $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1
 
 # install man pages
 .PHONY: man
