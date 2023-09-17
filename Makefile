@@ -75,6 +75,7 @@ all:: std_find_string
 all:: std_find
 all:: dice_unifrom_distribution
 all:: get_current_dir
+all:: stringstream_ex1
 
 test:
 	ls $? $(SRCDIR)
@@ -232,6 +233,9 @@ dice_unifrom_distribution:
 
 get_current_dir:
 	g++ $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
+
+stringstream_ex1:
+	g++ $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1.cpp
 
 # install man pages
 .PHONY: man
