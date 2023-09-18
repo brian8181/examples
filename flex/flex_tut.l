@@ -2,15 +2,16 @@
     /* definitions */
 %}
 
+/* rules section */
 %%
 
-[a-z] {printf("Single lower case\n");}
-. {printf("not a lower case\n");}
+[a-z] {printf("Single lower case character...\n");}
+. {printf("Not a lower case character...\n");}
 \n {return 0;}
 
 %%
 
-yywrap() {}
+int yywrap() {return 1;}
 
 int main()
 {

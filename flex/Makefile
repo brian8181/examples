@@ -8,4 +8,5 @@ lex.yy.c:
 
 .PHONY: clean
 clean:
-	rm output
+	-rm lex.yy.c
+	-rm output
