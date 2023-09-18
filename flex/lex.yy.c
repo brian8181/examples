@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 2
-#define YY_END_OF_BUFFER 3
+#define YY_NUM_RULES 4
+#define YY_END_OF_BUFFER 5
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -362,20 +362,20 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[8] =
     {   0,
-        0,    0,    3,    2,    1,    1,    0
+        0,    0,    5,    2,    3,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    2,    2,    2,
-        2,    2,    2,    2,    2,    2,    2,    1,    1,    1,
-        1,    1,    1,    1,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    3,    3,    3,    3,
 
         3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
@@ -402,24 +402,24 @@ static const YY_CHAR yy_meta[4] =
         1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[9] =
+static const flex_int16_t yy_base[8] =
     {   0,
-        3,    2,    4,    7,    0,    0,    7,    0
+        0,    0,    4,    5,    5,    5,    5
     } ;
 
-static const flex_int16_t yy_def[9] =
+static const flex_int16_t yy_def[8] =
     {   0,
-        8,    8,    7,    7,    7,    5,    0,    7
+        7,    1,    7,    7,    7,    7,    0
     } ;
 
-static const flex_int16_t yy_nxt[11] =
+static const flex_int16_t yy_nxt[9] =
     {   0,
-        4,    6,    6,    7,    5,    5,    3,    7,    7,    7
+        4,    5,    6,    7,    3,    7,    7,    7
     } ;
 
-static const flex_int16_t yy_chk[11] =
+static const flex_int16_t yy_chk[9] =
     {   0,
-        8,    5,    5,    3,    2,    1,    7,    7,    7,    7
+        1,    1,    1,    3,    7,    7,    7,    7
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -436,9 +436,9 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "count.l"
-#line 4 "count.l"
-    int count;
+#line 1 "flex_tut.l"
+#line 2 "flex_tut.l"
+    /* definitions */
 #line 442 "lex.yy.c"
 #line 443 "lex.yy.c"
 
@@ -657,9 +657,10 @@ YY_DECL
 		}
 
 	{
-#line 6 "count.l"
+#line 5 "flex_tut.l"
 
-#line 662 "lex.yy.c"
+
+#line 663 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -692,7 +693,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 7 );
+		while ( yy_base[yy_current_state] != 5 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -718,15 +719,26 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "count.l"
-count++;
+#line 7 "flex_tut.l"
+{printf("Single lower case\n");}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "count.l"
+#line 8 "flex_tut.l"
+{printf("not a lower case\n");}
+	YY_BREAK
+case 3:
+/* rule 3 can match eol */
+YY_RULE_SETUP
+#line 9 "flex_tut.l"
+{return 0;}
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 11 "flex_tut.l"
 ECHO;
 	YY_BREAK
-#line 729 "lex.yy.c"
+#line 741 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1731,11 +1743,17 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 8 "count.l"
+#line 11 "flex_tut.l"
 
-int main(void)
+
+yywrap() {}
+
+int main()
 {
+    printf("Enter string: ");
     yylex();
-    printf("number of identifiers = %d\n", count);
+
     return 0;
 }
+
+

@@ -4,7 +4,6 @@ letter [A-Za-z]
     int count;
 %}
 %%
-/* match identifier */
 {letter}({letter}|{digit})* count++;
 %%
 int main(void)
