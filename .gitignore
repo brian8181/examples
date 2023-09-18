@@ -2,4 +2,9 @@ build/*
 !build/Makefile
 !build/Makefile.tmpl
 .vscode/*.log
+*.yy.c
+flex/count
+flex/flex1
+flex/flex2
+
 

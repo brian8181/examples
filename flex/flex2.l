@@ -4,8 +4,8 @@
 
 %%
 
-[a-z] {printf("Single lower case\n");}
-. {printf("not a lower case\n");}
+[a-z] {printf("Single lower case...\n");}
+. {printf("Not a lower case...\n");}
 \n {return 0;}
 
 %%
