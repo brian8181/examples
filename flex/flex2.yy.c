@@ -1,5 +1,6 @@
+#line 1 "flex2.yy.c"
 
-#line 2 "lex.yy.c"
+#line 3 "flex2.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -436,11 +437,11 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "flex_tut.l"
-#line 2 "flex_tut.l"
+#line 1 "flex2.l"
+#line 2 "flex2.l"
     /* definitions */
-#line 442 "lex.yy.c"
-#line 443 "lex.yy.c"
+#line 443 "flex2.yy.c"
+#line 444 "flex2.yy.c"
 
 #define INITIAL 0
 
@@ -657,10 +658,10 @@ YY_DECL
 		}
 
 	{
-#line 5 "flex_tut.l"
+#line 5 "flex2.l"
 
 
-#line 663 "lex.yy.c"
+#line 664 "flex2.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -719,26 +720,26 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "flex_tut.l"
+#line 7 "flex2.l"
 {printf("Single lower case\n");}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "flex_tut.l"
+#line 8 "flex2.l"
 {printf("not a lower case\n");}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 9 "flex_tut.l"
+#line 9 "flex2.l"
 {return 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "flex_tut.l"
+#line 11 "flex2.l"
 ECHO;
 	YY_BREAK
-#line 741 "lex.yy.c"
+#line 742 "flex2.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1743,10 +1744,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 11 "flex_tut.l"
+#line 11 "flex2.l"
 
 
-yywrap() {}
+int yywrap() {return 0;}
 
 int main()
 {
@@ -1755,5 +1756,4 @@ int main()
 
     return 0;
 }
-
 

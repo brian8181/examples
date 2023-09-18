@@ -1,11 +1,18 @@
-all: output
+all: flex1 flex2
 
-output: lex.yy.c
-	gcc lex.yy.c -o output
+flex1: flex1.yy.c
+	gcc flex1.yy.c -o flex1
 
-lex.yy.c:
-	flex flex_tut.l 
+flex2: flex2.yy.c
+	gcc flex2.yy.c -o flex2
+
+flex1.yy.c:
+	flex -o flex1.yy.c flex1.l
+
+flex2.yy.c:
+	flex -o flex2.yy.c flex2.l
 
 .PHONY: clean
 clean:
-	rm output
+	-rm flex*.yy.c
+	-rm flex1 flex2
