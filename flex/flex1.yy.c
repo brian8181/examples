@@ -440,8 +440,14 @@ char *yytext;
 #line 1 "flex1.l"
 #line 2 "flex1.l"
     /* definitions */
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 443 "flex1.yy.c"
 #line 444 "flex1.yy.c"
+=======
+#line 442 "lex.yy.c"
+/* rules sectio */
+#line 444 "lex.yy.c"
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 
 #define INITIAL 0
 
@@ -658,10 +664,17 @@ YY_DECL
 		}
 
 	{
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 5 "flex1.l"
 
 
 #line 664 "flex1.yy.c"
+=======
+#line 6 "flex_tut.l"
+
+
+#line 664 "lex.yy.c"
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -720,6 +733,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 7 "flex1.l"
 {printf("Single lower case\n");}
 	YY_BREAK
@@ -727,19 +741,39 @@ case 2:
 YY_RULE_SETUP
 #line 8 "flex1.l"
 {printf("not a lower case\n");}
+=======
+#line 8 "flex_tut.l"
+{printf("Single lower case character...\n");}
+	YY_BREAK
+case 2:
+YY_RULE_SETUP
+#line 9 "flex_tut.l"
+{printf("Not a lower case character...\n");}
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 9 "flex1.l"
+=======
+#line 10 "flex_tut.l"
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 {return 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 11 "flex1.l"
 ECHO;
 	YY_BREAK
 #line 742 "flex1.yy.c"
+=======
+#line 12 "flex_tut.l"
+ECHO;
+	YY_BREAK
+#line 742 "lex.yy.c"
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1744,10 +1778,17 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
+<<<<<<< HEAD:flex/flex1.yy.c
 #line 11 "flex1.l"
 
 
 int yywrap() {return 0;}
+=======
+#line 12 "flex_tut.l"
+
+
+int yywrap() {return 1;}
+>>>>>>> f858373d60c6077435484273a943128b2de59335:flex/lex.yy.c
 
 int main()
 {
