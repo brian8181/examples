@@ -1,4 +1,4 @@
-all: flex1 flex2 count a.out
+all: flex1 flex2 count ex1
 
 flex1: flex1.yy.c
 	gcc flex1.yy.c -o flex1
@@ -9,8 +9,8 @@ flex2: flex2.yy.c
 count: count.yy.c
 	gcc count.yy.c -o count
 
-a.out: lex.yy.c
-	gcc lex.yy.c -ll
+ex1: ex1.yy.c
+	gcc ex1.yy.c -ll -o ex1
 
 flex1.yy.c:
 	flex -o flex1.yy.c flex1.l
@@ -21,10 +21,10 @@ flex2.yy.c:
 count.yy.c:
 	flex -o count.yy.c count.l
 
-lex.yy.c:
-	flex ex1.l
+ex1.yy.c:
+	flex -o ex1.yy.c ex1.l
 
 .PHONY: clean
 clean:
 	-rm *.yy.c
-	-rm flex1 flex2 count a.out
+	-rm flex1 flex2 count ex1
