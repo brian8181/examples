@@ -28,20 +28,20 @@ using namespace std;
     cb.push_back(2);
     cb.push_back(3);
 
-    int a = cb[0];  // a == 1
-    int b = cb[1];  // b == 2
-    int c = cb[2];  // c == 3
+    // int a = cb[0];  // a == 1
+    // int b = cb[1];  // b == 2
+    // int c = cb[2];  // c == 3
 
     // The buffer is full now, so pushing subsequent
     // elements will overwrite the front-most elements.
 
-    cb.push_back(4);  // Overwrite 1 with 4.
-    cb.push_back(5);  // Overwrite 2 with 5.
+    // cb.push_back(4);  // Overwrite 1 with 4.
+    // cb.push_back(5);  // Overwrite 2 with 5.
 
     // The buffer now contains 3, 4 and 5.
-    a = cb[0];  // a == 3
-    b = cb[1];  // b == 4
-    c = cb[2];  // c == 5
+    // a = cb[0];  // a == 3
+    // b = cb[1];  // b == 4
+    // c = cb[2];  // c == 5
 
     // Elements can be popped from either the front or the back.
     cb.pop_back();  // 5 is removed.
