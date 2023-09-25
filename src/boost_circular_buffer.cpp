@@ -35,8 +35,8 @@ using namespace std;
     // The buffer is full now, so pushing subsequent
     // elements will overwrite the front-most elements.
 
-    // cb.push_back(4);  // Overwrite 1 with 4.
-    // cb.push_back(5);  // Overwrite 2 with 5.
+    cb.push_back(4);  // Overwrite 1 with 4.
+    cb.push_back(5);  // Overwrite 2 with 5.
 
     // The buffer now contains 3, 4 and 5.
     // a = cb[0];  // a == 3
@@ -49,11 +49,9 @@ using namespace std;
 
     // Leaving only one element with value = 4.
     int d = cb[0];  // d == 4
-
     cout << d << endl;
 
     boost::circular_buffer<int>::iterator end = cb.begin();
-
     for(boost::circular_buffer<int>::iterator iter = cb.begin(); iter != end; ++iter)
     {
         cout << *iter << endl;
