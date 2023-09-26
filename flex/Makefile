@@ -1,6 +1,6 @@
 BUILD=./build
 
-all: flex1 flex2 count ex1
+all: flex1 flex2 count ex1 scanner
 
 flex1: flex1.yy.c
 	gcc $(BUILD)/flex1.yy.c -o $(BUILD)/flex1
@@ -14,6 +14,9 @@ count: count.yy.c
 ex1: ex1.yy.c
 	gcc $(BUILD)/ex1.yy.c -ll -o $(BUILD)/ex1
 
+scanner: scanner.yy.c
+	gcc $(BUILD)/scanner.yy.c -ll -o $(BUILD)/scanner
+
 flex1.yy.c:
 	flex -o $(BUILD)/flex1.yy.c flex1.l
 
@@ -25,6 +28,9 @@ count.yy.c:
 
 ex1.yy.c:
 	flex -o $(BUILD)/ex1.yy.c ex1.l
+
+scanner.yy.c:
+	flex -o $(BUILD)/scanner.yy.c scanner.l
 
 .PHONY: clean
 clean:
