@@ -76,6 +76,7 @@ all:: std_find
 all:: dice_unifrom_distribution
 all:: get_current_dir
 all:: stringstream_ex1
+all:: constexpr_ex
 
 test:
 	ls $? $(SRCDIR)
@@ -236,6 +237,10 @@ get_current_dir:
 
 stringstream_ex1:
 	g++ $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1
+
+constexpr_ex:
+	g++ $(SRCDIR)/constexpr_ex.cpp -o $(BUILDDIR)/constexpr_ex
+
 
 # install man pages
 .PHONY: man
