@@ -73,6 +73,7 @@ all:: signals_ex4
 all:: std_hex
 all:: std_find_string
 all:: std_find
+# all:: std_array_ex
 all:: dice_unifrom_distribution
 all:: get_current_dir
 all:: stringstream_ex1
@@ -217,29 +218,32 @@ itoa_example:
 signals_ex1:
 	gcc $(SRCDIR)/signals_ex1.c -o $(BUILDDIR)/signals_ex1
 
+std_array_ex:
+	$(CXX) $(SRCDIR)/std_array_ex.cpp -o $(BUILDDIR)/std_array_ex
+
 signals_ex4:
 	gcc $(SRCDIR)/signals_ex4.c -o $(BUILDDIR)/signals_ex4
 
 std_hex:
-	g++ $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex
+	$(CXX) $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex
 
 std_find_string:
-	g++ $(SRCDIR)/std_find_string.cpp -o $(BUILDDIR)/std_find_string
+	$(CXX) $(SRCDIR)/std_find_string.cpp -o $(BUILDDIR)/std_find_string
 
 std_find:
-	g++ $(SRCDIR)/std_find.cpp -o $(BUILDDIR)/std_find
+	$(CXX) $(SRCDIR)/std_find.cpp -o $(BUILDDIR)/std_find
 
 dice_unifrom_distribution:
-	g++ $(SRCDIR)/dice_unifrom_distribution.cpp -o $(BUILDDIR)/dice_unifrom_distribution
+	$(CXX) $(SRCDIR)/dice_unifrom_distribution.cpp -o $(BUILDDIR)/dice_unifrom_distribution
 
 get_current_dir:
-	g++ $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
+	$(CXX) $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
 
 stringstream_ex1:
-	g++ $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1
+	$(CXX) $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1
 
 constexpr_ex:
-	g++ $(SRCDIR)/constexpr_ex.cpp -o $(BUILDDIR)/constexpr_ex
+	$(CXX) $(SRCDIR)/constexpr_ex.cpp -o $(BUILDDIR)/constexpr_ex
 
 
 # install man pages
