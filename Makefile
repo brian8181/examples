@@ -43,6 +43,7 @@ OBJDIR = ./build
 debug: all
 
 all:: std_array 
+# all:: std_array_ex
 all:: faq1.1 faq1.2 
 all:: read_lines iter_files
 all:: boost_test boost_regex boost_exedir boost_io bfs-example
@@ -73,17 +74,20 @@ all:: signals_ex4
 all:: std_hex
 all:: std_find_string
 all:: std_find
-# all:: std_array_ex
 all:: dice_unifrom_distribution
 all:: get_current_dir
 all:: stringstream_ex1
 all:: constexpr_ex
+all:: char2string
 
 test:
 	ls $? $(SRCDIR)
 
 std_array:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
+
+valarray_ex:
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/valarray_ex.cpp -o $(BUILDDIR)/valarray_ex
 
 faq1.1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/faq1.1.cpp -o $(BUILDDIR)/faq1.1
@@ -188,9 +192,6 @@ istream:
 threads_ex1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/threads_ex1.cpp -o $(BUILDDIR)/threads_ex1
 
-valarray_ex:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/valarray_ex.cpp -o $(BUILDDIR)/valarray_ex
-
 pipe_timeout:
 	gcc $(SRCDIR)/pipe_timeout.c -o $(BUILDDIR)/pipe_timeout
 
@@ -245,6 +246,8 @@ stringstream_ex1:
 constexpr_ex:
 	$(CXX) $(SRCDIR)/constexpr_ex.cpp -o $(BUILDDIR)/constexpr_ex
 
+char2string:
+	$(CXX) $(SRCDIR)/char2string.cpp -o $(BUILDDIR)/char2string
 
 # install man pages
 .PHONY: man
