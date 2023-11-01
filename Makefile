@@ -79,6 +79,7 @@ all:: get_current_dir
 all:: stringstream_ex1
 all:: constexpr_ex
 all:: char2string
+all:: filesystem_current_directory
 
 test:
 	ls $? $(SRCDIR)
@@ -248,6 +249,9 @@ constexpr_ex:
 
 char2string:
 	$(CXX) $(SRCDIR)/char2string.cpp -o $(BUILDDIR)/char2string
+
+filesystem_current_directory:
+		$(CXX) $(SRCDIR)/filesystem_current_directory.cpp -o $(BUILDDIR)/filesystem_current_directory
 
 # install man pages
 .PHONY: man
