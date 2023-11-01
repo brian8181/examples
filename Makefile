@@ -1,3 +1,4 @@
+# Wed Nov  1 09:44:41 AM CDT 2023
 # BUILD 03-09-2023
 
 # RUN BEFORE autoreconf -ivfm
@@ -80,6 +81,7 @@ all:: stringstream_ex1
 all:: constexpr_ex
 all:: char2string
 all:: filesystem_current_directory
+all:: stl_set_difference
 
 test:
 	ls $? $(SRCDIR)
@@ -252,6 +254,9 @@ char2string:
 
 filesystem_current_directory:
 		$(CXX) $(SRCDIR)/filesystem_current_directory.cpp -o $(BUILDDIR)/filesystem_current_directory
+
+stl_set_difference:
+		$(CXX) $(SRCDIR)/stl_set_difference.cpp -o $(BUILDDIR)/stl_set_difference
 
 # install man pages
 .PHONY: man
