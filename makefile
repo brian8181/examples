@@ -23,7 +23,7 @@ CXXFLAGS += -DDEBUG -ggdb
 # cppunit IS NOT USED!(USR_SRCDIR)/
 # INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
-#LDFLAGS = -static -llibfmt -L/usr/local/lib64/
+#LDFLAGS = -static -llibfmt -L/usr/local/lib64/fmt
 #INCLUDES = -I/usr/local/include/fmt/
 
 # Makefile settings - Can be customized.
@@ -50,6 +50,7 @@ all:: read_lines iter_files
 all:: boost_test boost_regex boost_exedir boost_io bfs-example
 all:: boost_parse_xml
 all:: boost_circular_buffer
+all:: boost_regex_match
 #all:: bfs-example2
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
@@ -82,6 +83,7 @@ all:: constexpr_ex
 all:: char2string
 all:: filesystem_current_directory
 all:: stl_set_difference
+all:: strtok
 
 test:
 	ls $? $(SRCDIR)
@@ -134,16 +136,19 @@ regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
 
 regex_replace_example: regex_replace_example.o
-	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(BUILDDIR)/regex_replace_example.o -o $(BUILDDIR)/regex_replace_example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(BUILDDIR)/regex_replace_example.o -o $(BUILDDIR)/regex_replace_example
 
 regex_replace_example.o:
-	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
+
+boost_regex_match:
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRCDIR)/boost_regex_match.cpp -o $(BUILDDIR)/boost_regex_match
 
 sample_formats:
-	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
 
 sample_userType:
-	$(CXX) $(CXXFLAGS) -I ~/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
 	
 sub_match:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
@@ -257,6 +262,12 @@ filesystem_current_directory:
 
 stl_set_difference:
 		$(CXX) $(SRCDIR)/stl_set_difference.cpp -o $(BUILDDIR)/stl_set_difference
+
+eigen_ex1:
+		$(CXX) $(SRCDIR)/eigen_ex1.cpp -o $(BUILDDIR)/eigen_ex1
+
+strtok:
+		$(CXX) $(SRCDIR)/strtok.cpp -o $(BUILDDIR)/strtok
 
 # install man pages
 .PHONY: man
