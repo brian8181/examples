@@ -84,6 +84,8 @@ all:: char2string
 all:: filesystem_current_directory
 all:: stl_set_difference
 all:: strtok
+all:: regex_search
+all:: regex_example
 
 test:
 	ls $? $(SRCDIR)
@@ -268,6 +270,13 @@ eigen_ex1:
 
 strtok:
 		$(CXX) $(SRCDIR)/strtok.cpp -o $(BUILDDIR)/strtok
+
+regex_search:
+		$(CXX) $(SRCDIR)/regex_search.cpp -o $(BUILDDIR)/regex_search
+
+regex_example:
+	$(CC) $(SRCDIR)/regex_example.cpp -o $(BUILDDIR)/regex_example
+
 
 # install man pages
 .PHONY: man
