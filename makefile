@@ -43,9 +43,9 @@ OBJDIR = ./build
 
 debug: all
 
-all:: std_array 
+all:: std_array
 # all:: std_array_ex
-all:: faq1.1 faq1.2 
+all:: faq1.1 faq1.2
 all:: read_lines iter_files
 all:: boost_test boost_regex boost_exedir boost_io bfs-example
 all:: boost_parse_xml
@@ -54,8 +54,8 @@ all:: boost_regex_match
 #all:: bfs-example2
 all:: regx_replace1 sub_match sub_match sub_match2
 all:: dump_ifstream map_insert
-all:: template_ex1 
-all:: fmtlib.ex1 fmtlib.play 
+all:: template_ex1
+all:: fmtlib.ex1 fmtlib.play
 all:: string_view_test math_consts
 all:: cfilesys atoi_itoa
 all:: istream threads_ex1
@@ -85,7 +85,10 @@ all:: filesystem_current_directory
 all:: stl_set_difference
 all:: strtok
 all:: regex_search
-all:: regex_example
+all:: unique_ptr_example
+#all:: regex_example
+#all:: udpserver_example
+# all:: mybuf
 
 test:
 	ls $? $(SRCDIR)
@@ -110,8 +113,9 @@ iter_files:
 
 boost_test:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/ $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_t
+
 boost_regex:
-	#$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
 
 boost_exedir:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
@@ -144,14 +148,14 @@ regex_replace_example.o:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
 
 boost_regex_match:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRCDIR)/boost_regex_match.cpp -o $(BUILDDIR)/boost_regex_match
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex_match.cpp -o $(BUILDDIR)/boost_regex_match
 
 sample_formats:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
 
 sample_userType:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
-	
+
 sub_match:
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
 
@@ -274,9 +278,17 @@ strtok:
 regex_search:
 		$(CXX) $(SRCDIR)/regex_search.cpp -o $(BUILDDIR)/regex_search
 
+unique_ptr_example:
+		$(CXX) $(SRCDIR)/unique_ptr_example.cpp -o $(BUILDDIR)/unique_ptr_example
+
 regex_example:
 	$(CC) $(SRCDIR)/regex_example.cpp -o $(BUILDDIR)/regex_example
 
+udpserver_example:
+	$(CC) $(SRCDIR)/udpserver_example.c -o $(BUILDDIR)/udpserver_example
+
+mybuf:
+	$(CXX) $(SRCDIR)/mybuf.cpp -o $(BUILDDIR)/mybuf
 
 # install man pages
 .PHONY: man
@@ -290,7 +302,7 @@ unman:
 	rm $(man1dir)/$(APPNAME).1.gz
 	mandb
 
-# install 
+# install
 .PHONY: install
 install: man
 	cp $(BUILDDIR)/$(APPNAME) $(prefix)/bin/$(APPNAME)
@@ -305,7 +317,7 @@ clean:
 	# -rm -f $(BUILDDIR)/std_array
 	# -rm -f $(BUILDDIR)/read_lines $(BUILDDIR)/iter_files $(BUILDDIR)/boost_test $(BUILDDIR)/boost_regex $(BUILDDIR)/regx_replace1
 	# -rm -f $(BUILDDIR)/sub_match $(BUILDDIR)/sub_match2 $(BUILDDIR)/boost_exedir  $(BUILDDIR)/dump_ifstream $(BUILDDIR)/map_insert
-	# -rm -f $(BUILDDIR)/gtk_hello 
+	# -rm -f $(BUILDDIR)/gtk_hello
 	# -rm -f $(BUILDDIR)/gtk_example-0
 	# -rm -f $(BUILDDIR)/template_ex1
 	# -rm -f $(BUILDDIR)/string_view_test
@@ -314,4 +326,3 @@ clean:
 	# -rm -f $(BUILDDIR)/faq1.2
 	# -rm -f $(BUILDDIR)/fmtlib.ex1
 	# -rm -f $(BUILDDIR)/fmtlib.playn
-	

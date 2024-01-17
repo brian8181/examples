@@ -5,6 +5,7 @@
 int main()
 {
   std::string s = "Boost Libraries";
-  boost::regex expr{"\\w+\\s\\w+"};
+  boost::regex expr{"(?<test>\\w+)\\s\\w+"};
+
   std::cout << std::boolalpha << boost::regex_match(s, expr) << '\n';
 }
