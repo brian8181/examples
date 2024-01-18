@@ -10,7 +10,6 @@
 struct B
 {
     virtual ~B() = default;
-
     virtual void bar() { std::cout << "B::bar\n"; }
 };
 
