@@ -1,5 +1,6 @@
-# Wed Nov  1 09:44:41 AM CDT 2023
-# BUILD 03-09-2023
+# File Name:  streamy.hpp
+# Build Date: Fri Feb  2 04:35:18 AM CST 2024
+# Version:    0.0.1
 
 # RUN BEFORE autoreconf -ivfm
 # RUN BEFORE autoreconf -i
@@ -20,21 +21,21 @@ CXXFLAGS += -DDEBUG -ggdb
 #CXXFLAGS += -DDEBUG -g
 
 # lib settings
-# cppunit IS NOT USED!(USR_SRCDIR)/
+# cppunit IS NOT USED!(USR_SRC)/
 # INCLUDES = -I/usr/local/include/cppunit/
 # add addtional libs here
 #LDFLAGS = -static -llibfmt -L/usr/local/lib64/fmt
 #INCLUDES = -I/usr/local/include/fmt/
 
 # Makefile settings - Can be customized.
-APPNAME = examples
+APP = examples
 EXT = cpp
-ROOTDIR  = .
+ROOT  = .
 # install correctly or do this /usr/local/lib?
-#USR_SRCDIR = ../$(ROOTDIR)
-BUILDDIR = ./build
-SRCDIR = $(ROOTDIR)/src
-OBJDIR = ./build
+#USR_SRC = ../$(ROOT)
+BLD = ./build
+SRC = $(ROOT)/src
+OBJ = ./build
 
 # compile & link for debug
 #debug: CXXFLAGS += -DDEBUG -g
@@ -89,240 +90,244 @@ all:: unique_ptr_example
 #all:: regex_example
 #all:: udpserver_example
 # all:: mybuf
+all:: bit_set_ex1.o
 
 test:
-	ls $? $(SRCDIR)
+	ls $? $(SRC)
 
 std_array:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/std_array.cpp -o $(BUILDDIR)/std_array
+	$(CXX) $(CXXFLAGS) $(SRC)/std_array.cpp -o $(BLD)/std_array
 
 valarray_ex:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/valarray_ex.cpp -o $(BUILDDIR)/valarray_ex
+	$(CXX) $(CXXFLAGS) $(SRC)/valarray_ex.cpp -o $(BLD)/valarray_ex
 
 faq1.1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/faq1.1.cpp -o $(BUILDDIR)/faq1.1
+	$(CXX) $(CXXFLAGS) $(SRC)/faq1.1.cpp -o $(BLD)/faq1.1
 
 faq1.2:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/faq1.2.cpp -o $(BUILDDIR)/faq1.2
+	$(CXX) $(CXXFLAGS) $(SRC)/faq1.2.cpp -o $(BLD)/faq1.2
 
 read_lines:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/read_lines.cpp -o $(BUILDDIR)/read_lines
+	$(CXX) $(CXXFLAGS) $(SRC)/read_lines.cpp -o $(BLD)/read_lines
 
 iter_files:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/iter_files.cpp -o $(BUILDDIR)/iter_files
+	$(CXX) $(CXXFLAGS) $(SRC)/iter_files.cpp -o $(BLD)/iter_files
 
 boost_test:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/ $(SRCDIR)/boost_test.cpp -o $(BUILDDIR)/boost_t
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/ $(SRC)/boost_test.cpp -o $(BLD)/boost_t
 
 boost_regex:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex.cpp -o $(BUILDDIR)/boost_regex
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_regex.cpp -o $(BLD)/boost_regex
 
 boost_exedir:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_exedir.cpp -o $(BUILDDIR)/boost_exedir
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_exedir.cpp -o $(BLD)/boost_exedir
 
 # boost_mpi:
-# 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRCDIR)/boost_mpi.cpp -o $(BUILDDIR)/boost_mpi
+# 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRC)/boost_mpi.cpp -o $(BLD)/boost_mpi
 
 boost_parse_xml:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_parse_xml.cpp -o $(BUILDDIR)/boost_parse_xml
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_parse_xml.cpp -o $(BLD)/boost_parse_xml
 
 boost_io:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_io.cpp -o $(BUILDDIR)/boost_io
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_io.cpp -o $(BLD)/boost_io
 
 bfs-example:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/bfs-example.cpp -o $(BUILDDIR)/bfs-example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/bfs-example.cpp -o $(BLD)/bfs-example
 
 bfs-example2:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/bfs-example2.cpp -o $(BUILDDIR)/bfs-example2
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/bfs-example2.cpp -o $(BLD)/bfs-example2
 
 boost_circular_buffer::
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_circular_buffer.cpp -o $(BUILDDIR)/boost_circular_buffer
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_circular_buffer.cpp -o $(BLD)/boost_circular_buffer
 
 regx_replace1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/regx_replace1.cpp -o $(BUILDDIR)/regx_replace1
+	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
 
 regex_replace_example: regex_replace_example.o
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(BUILDDIR)/regex_replace_example.o -o $(BUILDDIR)/regex_replace_example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(BLD)/regex_replace_example.o -o $(BLD)/regex_replace_example
 
 regex_replace_example.o:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRCDIR)/regex_replace_example.cpp -o $(BUILDDIR)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRC)/regex_replace_example.cpp -o $(BLD)/regex_replace_example.o
 
 boost_regex_match:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/boost_regex_match.cpp -o $(BUILDDIR)/boost_regex_match
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_regex_match.cpp -o $(BLD)/boost_regex_match
 
 sample_formats:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_formats.cpp -o $(BUILDDIR)/sample_formats
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/sample_formats.cpp -o $(BLD)/sample_formats
 
 sample_userType:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRCDIR)/sample_userType.cpp -o $(BUILDDIR)/sample_userType
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/sample_userType.cpp -o $(BLD)/sample_userType
 
 sub_match:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match.cpp -o $(BUILDDIR)/sub_match
+	$(CXX) $(CXXFLAGS) $(SRC)/sub_match.cpp -o $(BLD)/sub_match
 
 sub_match2:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/sub_match2.cpp -o $(BUILDDIR)/sub_match2
+	$(CXX) $(CXXFLAGS) $(SRC)/sub_match2.cpp -o $(BLD)/sub_match2
 
 dump_ifstream:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/dump_ifstream.cpp $(SRCDIR)/utility.cpp -o $(BUILDDIR)/dump_ifstream
+	$(CXX) $(CXXFLAGS) $(SRC)/dump_ifstream.cpp $(SRC)/utility.cpp -o $(BLD)/dump_ifstream
 
 map_insert:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/map_insert.cpp -o $(BUILDDIR)/map_insert
+	$(CXX) $(CXXFLAGS) $(SRC)/map_insert.cpp -o $(BLD)/map_insert
 
 template_ex1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/template_ex1.cpp -o $(BUILDDIR)/template_ex1
+	$(CXX) $(CXXFLAGS) $(SRC)/template_ex1.cpp -o $(BLD)/template_ex1
 
 gtk_hello:
 	#@echo "MAKE RULE - gtk_hello: disabled"
-	gcc $(SRCDIR)/gtk_hello.c -o $(BUILDDIR)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
+	gcc $(SRC)/gtk_hello.c -o $(BLD)/gtk_hello `pkg-config --cflags --libs gtk+-3.0`
 
 gtk_example-0:
 	@echo "MAKE RULE - gtk_example-0: disabled"
-	#gcc `pkg-config --cflags gtk+-3.0` -o $(BUILDDIR)/gtk_example-0 $(SRCDIR)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
+	#gcc `pkg-config --cflags gtk+-3.0` -o $(BLD)/gtk_example-0 $(SRC)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
 stl_format:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/stl_format.cpp -o $(BUILDDIR)/stl_format
+	$(CXX) $(CXXFLAGS) $(SRC)/stl_format.cpp -o $(BLD)/stl_format
 
 fmtlib.ex1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o $(BUILDDIR)/fmtlib.ex1
+	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.ex1
 
 fmtlib.play:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BUILDDIR)/fmtlib.play
+	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.play
 
 string_view_test:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/string_view_test.cpp -o $(BUILDDIR)/string_view_test
+	$(CXX) $(CXXFLAGS) $(SRC)/string_view_test.cpp -o $(BLD)/string_view_test
 
 math_consts:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/math_consts.cpp -o $(BUILDDIR)/math_consts
+	$(CXX) $(CXXFLAGS) $(SRC)/math_consts.cpp -o $(BLD)/math_consts
 
 cfilesys:
-	$(CC) $(CFLAGS) $(SRCDIR)/cfilesys.c -o $(BUILDDIR)/cfilesys
+	$(CC) $(CFLAGS) $(SRC)/cfilesys.c -o $(BLD)/cfilesys
 
 atoi_itoa:
-	$(CC) $(CFLAGS) $(SRCDIR)/atoi_itoa.c -o $(BUILDDIR)/atoi_itoa
+	$(CC) $(CFLAGS) $(SRC)/atoi_itoa.c -o $(BLD)/atoi_itoa
 
 istream:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/istream.cpp -o $(BUILDDIR)/istream
+	$(CXX) $(CXXFLAGS) $(SRC)/istream.cpp -o $(BLD)/istream
 
 threads_ex1:
-	$(CXX) $(CXXFLAGS) $(SRCDIR)/threads_ex1.cpp -o $(BUILDDIR)/threads_ex1
+	$(CXX) $(CXXFLAGS) $(SRC)/threads_ex1.cpp -o $(BLD)/threads_ex1
 
 pipe_timeout:
-	gcc $(SRCDIR)/pipe_timeout.c -o $(BUILDDIR)/pipe_timeout
+	gcc $(SRC)/pipe_timeout.c -o $(BLD)/pipe_timeout
 
 signal_ex3:
-	gcc $(SRCDIR)/signal_ex3.c -o $(BUILDDIR)/signal_ex3
+	gcc $(SRC)/signal_ex3.c -o $(BLD)/signal_ex3
 
 vla_basic:
-	gcc $(SRCDIR)/vla_basic.c -o $(BUILDDIR)/vla_basic
+	gcc $(SRC)/vla_basic.c -o $(BLD)/vla_basic
 
 vla_sizeof:
-	gcc $(SRCDIR)/vla_sizeof.c -o $(BUILDDIR)/vla_sizeof
+	gcc $(SRC)/vla_sizeof.c -o $(BLD)/vla_sizeof
 
 vla_pass_vla:
-	gcc $(SRCDIR)/vla_pass_vla.c -o $(BUILDDIR)/vla_pass_vla
+	gcc $(SRC)/vla_pass_vla.c -o $(BLD)/vla_pass_vla
 
 vla_pass_mutivla:
-	gcc $(SRCDIR)/vla_pass_mutivla.c -o $(BUILDDIR)/vla_pass_mutivla
+	gcc $(SRC)/vla_pass_mutivla.c -o $(BLD)/vla_pass_mutivla
 
 vla_typedef:
-	gcc $(SRCDIR)/vla_typedef.c -o $(BUILDDIR)/vla_typedef
+	gcc $(SRC)/vla_typedef.c -o $(BLD)/vla_typedef
 
 itoa_example:
-	gcc $(SRCDIR)/itoa_example.c -o $(BUILDDIR)/itoa_example
+	gcc $(SRC)/itoa_example.c -o $(BLD)/itoa_example
 
 signals_ex1:
-	gcc $(SRCDIR)/signals_ex1.c -o $(BUILDDIR)/signals_ex1
+	gcc $(SRC)/signals_ex1.c -o $(BLD)/signals_ex1
 
 std_array_ex:
-	$(CXX) $(SRCDIR)/std_array_ex.cpp -o $(BUILDDIR)/std_array_ex
+	$(CXX) $(SRC)/std_array_ex.cpp -o $(BLD)/std_array_ex
 
 signals_ex4:
-	gcc $(SRCDIR)/signals_ex4.c -o $(BUILDDIR)/signals_ex4
+	gcc $(SRC)/signals_ex4.c -o $(BLD)/signals_ex4
 
 std_hex:
-	$(CXX) $(SRCDIR)/std_hex.cpp -o $(BUILDDIR)/std_hex
+	$(CXX) $(SRC)/std_hex.cpp -o $(BLD)/std_hex
 
 std_find_string:
-	$(CXX) $(SRCDIR)/std_find_string.cpp -o $(BUILDDIR)/std_find_string
+	$(CXX) $(SRC)/std_find_string.cpp -o $(BLD)/std_find_string
 
 std_find:
-	$(CXX) $(SRCDIR)/std_find.cpp -o $(BUILDDIR)/std_find
+	$(CXX) $(SRC)/std_find.cpp -o $(BLD)/std_find
 
 dice_unifrom_distribution:
-	$(CXX) $(SRCDIR)/dice_unifrom_distribution.cpp -o $(BUILDDIR)/dice_unifrom_distribution
+	$(CXX) $(SRC)/dice_unifrom_distribution.cpp -o $(BLD)/dice_unifrom_distribution
 
 get_current_dir:
-	$(CXX) $(SRCDIR)/get_current_dir.cpp -o $(BUILDDIR)/get_current_dir
+	$(CXX) $(SRC)/get_current_dir.cpp -o $(BLD)/get_current_dir
 
 stringstream_ex1:
-	$(CXX) $(SRCDIR)/stringstream_ex1.cpp -o $(BUILDDIR)/stringstream_ex1
+	$(CXX) $(SRC)/stringstream_ex1.cpp -o $(BLD)/stringstream_ex1
 
 constexpr_ex:
-	$(CXX) $(SRCDIR)/constexpr_ex.cpp -o $(BUILDDIR)/constexpr_ex
+	$(CXX) $(SRC)/constexpr_ex.cpp -o $(BLD)/constexpr_ex
 
 char2string:
-	$(CXX) $(SRCDIR)/char2string.cpp -o $(BUILDDIR)/char2string
+	$(CXX) $(SRC)/char2string.cpp -o $(BLD)/char2string
 
 filesystem_current_directory:
-		$(CXX) $(SRCDIR)/filesystem_current_directory.cpp -o $(BUILDDIR)/filesystem_current_directory
+		$(CXX) $(SRC)/filesystem_current_directory.cpp -o $(BLD)/filesystem_current_directory
 
 stl_set_difference:
-		$(CXX) $(SRCDIR)/stl_set_difference.cpp -o $(BUILDDIR)/stl_set_difference
+		$(CXX) $(SRC)/stl_set_difference.cpp -o $(BLD)/stl_set_difference
 
 eigen_ex1:
-		$(CXX) $(SRCDIR)/eigen_ex1.cpp -o $(BUILDDIR)/eigen_ex1
+		$(CXX) $(SRC)/eigen_ex1.cpp -o $(BLD)/eigen_ex1
 
 strtok:
-		$(CXX) $(SRCDIR)/strtok.cpp -o $(BUILDDIR)/strtok
+		$(CXX) $(SRC)/strtok.cpp -o $(BLD)/strtok
 
 regex_search:
-		$(CXX) $(SRCDIR)/regex_search.cpp -o $(BUILDDIR)/regex_search
+		$(CXX) $(SRC)/regex_search.cpp -o $(BLD)/regex_search
 
 unique_ptr_example:
-		$(CXX) $(SRCDIR)/unique_ptr_example.cpp -o $(BUILDDIR)/unique_ptr_example
+		$(CXX) $(SRC)/unique_ptr_example.cpp -o $(BLD)/unique_ptr_example
 
 regex_example:
-	$(CC) $(SRCDIR)/regex_example.cpp -o $(BUILDDIR)/regex_example
+	$(CC) $(SRC)/regex_example.cpp -o $(BLD)/regex_example
 
 udpserver_example:
-	$(CC) $(SRCDIR)/udpserver_example.c -o $(BUILDDIR)/udpserver_example
+	$(CC) $(SRC)/udpserver_example.c -o $(BLD)/udpserver_example
 
 mybuf:
-	$(CXX) $(SRCDIR)/mybuf.cpp -o $(BUILDDIR)/mybuf
+	$(CXX) $(SRC)/mybuf.cpp -o $(BLD)/mybuf
+
+bit_set_ex1.o:
+	$(CXX) $(SRC)/bit_set_ex1.cpp -o $(BLD)/bit_set_ex1
 
 # install man pages
 .PHONY: man
 man:
-	cp ../man/$(APPNAME).1 $(man1dir)
-	# gzip $(man1dir)/$(APPNAME).1
+	cp ../man/$(APP).1 $(man1dir)
+	# gzip $(man1dir)/$(APP).1
 	mandb
 
 .PHONY: unman
 unman:
-	rm $(man1dir)/$(APPNAME).1.gz
+	rm $(man1dir)/$(APP).1.gz
 	mandb
 
 # install
 .PHONY: install
 install: man
-	cp $(BUILDDIR)/$(APPNAME) $(prefix)/bin/$(APPNAME)
-	rm $(prefix)/bin/$(APPNAME)
+	cp $(BLD)/$(APP) $(prefix)/bin/$(APP)
+	rm $(prefix)/bin/$(APP)
 
 # delete object files & app executable
 .PHONY: clean
 clean:
-	-rm $(BUILDDIR)/*
-	# -rm -f $(BUILDDIR)/$(APPNAME) $(BUILDDIR)/*.o $(BUILDDIR)/$(APPNAME)_test $(BUILDDIR)/bash_color_test
-	# -rm -f $(BUILDDIR)/*.xml $(BUILDDIR)/$(APPNAME).$(BUILD_VERSION).tar.gz
-	# -rm -f $(BUILDDIR)/std_array
-	# -rm -f $(BUILDDIR)/read_lines $(BUILDDIR)/iter_files $(BUILDDIR)/boost_test $(BUILDDIR)/boost_regex $(BUILDDIR)/regx_replace1
-	# -rm -f $(BUILDDIR)/sub_match $(BUILDDIR)/sub_match2 $(BUILDDIR)/boost_exedir  $(BUILDDIR)/dump_ifstream $(BUILDDIR)/map_insert
-	# -rm -f $(BUILDDIR)/gtk_hello
-	# -rm -f $(BUILDDIR)/gtk_example-0
-	# -rm -f $(BUILDDIR)/template_ex1
-	# -rm -f $(BUILDDIR)/string_view_test
-	# -rm -f $(BUILDDIR)/math_consts
-	# -rm -f $(BUILDDIR)/faq1.1
-	# -rm -f $(BUILDDIR)/faq1.2
-	# -rm -f $(BUILDDIR)/fmtlib.ex1
-	# -rm -f $(BUILDDIR)/fmtlib.playn
+	-rm $(BLD)/*
+	# -rm -f $(BLD)/$(APP) $(BLD)/*.o $(BLD)/$(APP)_test $(BLD)/bash_color_test
+	# -rm -f $(BLD)/*.xml $(BLD)/$(APP).$(BUILD_VERSION).tar.gz
+	# -rm -f $(BLD)/std_array
+	# -rm -f $(BLD)/read_lines $(BLD)/iter_files $(BLD)/boost_test $(BLD)/boost_regex $(BLD)/regx_replace1
+	# -rm -f $(BLD)/sub_match $(BLD)/sub_match2 $(BLD)/boost_exedir  $(BLD)/dump_ifstream $(BLD)/map_insert
+	# -rm -f $(BLD)/gtk_hello
+	# -rm -f $(BLD)/gtk_example-0
+	# -rm -f $(BLD)/template_ex1
+	# -rm -f $(BLD)/string_view_test
+	# -rm -f $(BLD)/math_consts
+	# -rm -f $(BLD)/faq1.1
+	# -rm -f $(BLD)/faq1.2
+	# -rm -f $(BLD)/fmtlib.ex1
+	# -rm -f $(BLD)/fmtlib.playn
