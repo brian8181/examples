@@ -90,7 +90,7 @@ all:: unique_ptr_example
 #all:: regex_example
 #all:: udpserver_example
 # all:: mybuf
-all:: bit_set_ex1.o
+##all:: fmtlib.color.ex1.cpp
 
 test:
 	ls $? $(SRC)
@@ -189,6 +189,9 @@ fmtlib.ex1:
 
 fmtlib.play:
 	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.play
+
+fmtlib.color.ex1.cpp:
+	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.color.ex1.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.color.ex1.cpp
 
 string_view_test:
 	$(CXX) $(CXXFLAGS) $(SRC)/string_view_test.cpp -o $(BLD)/string_view_test
