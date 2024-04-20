@@ -1,4 +1,25 @@
 #!/bin/bash
 
-make -f makefile clean | tee make.log
-make -f makefile | tee -a make.log
+FMT_LT_GREEN='\e[92m'
+FMT_GREEN='\e[32m'
+FMT_RED='\e[31m'
+FMT_RESET='\e[0m'
+
+STD_OUT ()
+{
+    local TEXT=$1
+    echo -e "${FMT_RED}MAKE${FMT_RESET}: ${FMT_GREEN}$TEXT${FMT_RESET}"
+}
+
+echo
+STD_OUT "clean all output files from \"./build\" and rebuild, log to \"make.log\", (overwrites last) ..."
+echo
+make -f makefile clean > make.log
+make -f makefile >> make.log
+
+echo
+STD_OUT "./make.log ..."
+cat make.log
+STD_OUT "EOF"
+echo
+STD_OUT "make clean done."
