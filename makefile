@@ -60,16 +60,16 @@ all:: $(BLD)/threads_ex1
 #all:: valarray_ex
 all:: $(BLD)/pipe_timeout
 all:: $(BLD)/signal_ex3
-all:: vla_basic
-all:: vla_sizeof
+all:: $(BLD)/vla_basic
+all:: $(BLD)/vla_sizeof
 # link error!
-#all:: vla_pass_vla
-all:: vla_pass_mutivla
-all:: vla_typedef
+#all:: $(BLD)/vla_pass_vla
+all:: $(BLD)/vla_pass_mutivla
+all:: $(BLD)/vla_typedef
 # link error!
-#all:: itoa_example
-all:: signals_ex1
-all:: signals_ex4
+#all:: $(BLD)/itoa_example
+all:: $(BLD)/signals_ex1
+all:: $(BLD)/signals_ex4
 all:: std_hex
 all:: std_find_string
 all:: std_find
@@ -201,31 +201,31 @@ $(BLD)/pipe_timeout: $(SRC)/pipe_timeout.c
 $(BLD)/signal_ex3: $(SRC)/signal_ex3.c
 	$(CC) $(SRC)/signal_ex3.c -o $(BLD)/signal_ex3
 
-vla_basic:
-	gcc $(SRC)/vla_basic.c -o $(BLD)/vla_basic
+$(BLD)/vla_basic: $(SRC)/vla_basic.c
+	$(CXX) $(SRC)/vla_basic.c -o $(BLD)/vla_basic
 
-vla_sizeof:
-	gcc $(SRC)/vla_sizeof.c -o $(BLD)/vla_sizeof
+$(BLD)/vla_sizeof: $(SRC)/vla_sizeof.c
+	$(CXX) $(SRC)/vla_sizeof.c -o $(BLD)/vla_sizeof
 
-vla_pass_vla:
+$(BLD)/vla_pass_vla: $(SRC)/vla_pass_vla.c
 	gcc $(SRC)/vla_pass_vla.c -o $(BLD)/vla_pass_vla
 
-vla_pass_mutivla:
+$(BLD)/vla_pass_mutivla: $(SRC)/vla_pass_mutivla.c
 	gcc $(SRC)/vla_pass_mutivla.c -o $(BLD)/vla_pass_mutivla
 
-vla_typedef:
+$(BLD)/vla_typedef: $(SRC)/vla_typedef.c
 	gcc $(SRC)/vla_typedef.c -o $(BLD)/vla_typedef
 
-itoa_example:
+$(BLD)/itoa_example: $(SRC)/itoa_example.c
 	gcc $(SRC)/itoa_example.c -o $(BLD)/itoa_example
 
-signals_ex1:
+$(BLD)/signals_ex1: $(SRC)/signals_ex1.c
 	gcc $(SRC)/signals_ex1.c -o $(BLD)/signals_ex1
 
-std_array_ex:
+$(BLD)/std_array_ex: $(SRC)/std_array_ex.cpp
 	$(CXX) $(SRC)/std_array_ex.cpp -o $(BLD)/std_array_ex
 
-signals_ex4:
+$(BLD)/signals_ex4: $(SRC)/signals_ex4.c
 	gcc $(SRC)/signals_ex4.c -o $(BLD)/signals_ex4
 
 std_hex:
