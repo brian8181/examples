@@ -2,23 +2,17 @@
 # Build Date: Fri Feb  2 04:35:18 AM CST 2024
 # Version:    0.0.1
 
-# RUN BEFORE autoreconf -ivfm
-# RUN BEFORE autoreconf -i
-MAKE_TEMPLATE = 1.3;
-BUILD_VERSION = 0.1.0
-
-prefix = /usr/local
-mandir = $(prefix)/share/man
-man1dir = $(mandir)/man1
+prefix=/usr/local
+mandir=$(prefix)/share/man
+man1dir=$(mandir)/man1
 
 # Compiler settings - Can be customized.
-CXX = g++
-CC = gcc
+CXX=g++
+CC=gcc
 CFLAGS = -std=c99
 CXXFLAGS = -Wall -std=c++20
 CXXFLAGS += -DDEBUG -ggdb
 #CXXFLAGS = -Wall -std=c++11 -std=gnu++17
-#CXXFLAGS += -DDEBUG -g
 
 # lib settings
 # cppunit IS NOT USED!(USR_SRC)/
@@ -28,28 +22,26 @@ CXXFLAGS += -DDEBUG -ggdb
 #INCLUDES = -I/usr/local/include/fmt/
 
 # Makefile settings - Can be customized.
-APP = examples
-EXT = cpp
-ROOT  = .
+APP=examples
+EXT=cpp
+ROOT=.
 # install correctly or do this /usr/local/lib?
 #USR_SRC = ../$(ROOT)
-BLD = ./build
-SRC = $(ROOT)/src
-OBJ = ./build
+BLD=./build
+SRC=$(ROOT)/src
+OBJ=./build
 
 # compile & link for debug
 #debug: CXXFLAGS += -DDEBUG -g
 # compile & link for debug GDBversion variable
 #debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
 
-debug: all
-
-all:: std_array
+all:: $(BLD)/std_array
 # all:: std_array_ex
 all:: faq1.1 faq1.2
-all:: read_lines iter_files
-all:: boost_test boost_regex boost_exedir boost_io bfs-example
-all:: boost_parse_xml
+#all:: read_lines iter_files
+all:: boost_io bfs-example
+all:: $(BLD)/boost_parse_xml
 all:: boost_circular_buffer
 all:: boost_regex_match
 #all:: bfs-example2
@@ -91,11 +83,12 @@ all:: unique_ptr_example
 #all:: udpserver_example
 # all:: mybuf
 ##all:: fmtlib.color.ex1.cpp
+all:: $(BLD)/lambda01
 
-test:
-	ls $? $(SRC)
+# test:
+# 	ls $? $(SRC)
 
-std_array:
+$(BLD)/std_array: $(SRC)/std_array.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/std_array.cpp -o $(BLD)/std_array
 
 valarray_ex:
@@ -110,22 +103,9 @@ faq1.2:
 read_lines:
 	$(CXX) $(CXXFLAGS) $(SRC)/read_lines.cpp -o $(BLD)/read_lines
 
-iter_files:
-	$(CXX) $(CXXFLAGS) $(SRC)/iter_files.cpp -o $(BLD)/iter_files
+#$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRC)/boost_mpi.cpp -o $(BLD)/boost_mpi
 
-boost_test:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/ $(SRC)/boost_test.cpp -o $(BLD)/boost_t
-
-boost_regex:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_regex.cpp -o $(BLD)/boost_regex
-
-boost_exedir:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_exedir.cpp -o $(BLD)/boost_exedir
-
-# boost_mpi:
-# 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRC)/boost_mpi.cpp -o $(BLD)/boost_mpi
-
-boost_parse_xml:
+$(BLD)/boost_parse_xml:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_parse_xml.cpp -o $(BLD)/boost_parse_xml
 
 boost_io:
@@ -143,11 +123,11 @@ boost_circular_buffer::
 regx_replace1:
 	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
 
-regex_replace_example: regex_replace_example.o
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(BLD)/regex_replace_example.o -o $(BLD)/regex_replace_example
+regex_replace_example: $(OBJ)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(OBJ)/regex_replace_example.o -o $(BLD)/regex_replace_example
 
 regex_replace_example.o:
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRC)/regex_replace_example.cpp -o $(BLD)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRC)/regex_replace_example.cpp -o $(OBJ)/regex_replace_example.o
 
 boost_regex_match:
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_regex_match.cpp -o $(BLD)/boost_regex_match
@@ -190,8 +170,8 @@ fmtlib.ex1:
 fmtlib.play:
 	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.play
 
-fmtlib.color.ex1.cpp:
-	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.color.ex1.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.color.ex1.cpp
+fmtlib.color.ex1.cpp: $(SRC)/fmtlib.color.ex1.cpp
+	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.color.ex1.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.color.ex1
 
 string_view_test:
 	$(CXX) $(CXXFLAGS) $(SRC)/string_view_test.cpp -o $(BLD)/string_view_test
@@ -298,6 +278,13 @@ mybuf:
 bit_set_ex1.o:
 	$(CXX) $(SRC)/bit_set_ex1.cpp -o $(BLD)/bit_set_ex1
 
+$(BLD)/lambda01: $(OBJ)/lambda01.o
+	$(CXX) $(CXXFLAGS) $(OBJ)/lambda01.o -o $(BLD)/lambda01
+
+$(OBJ)/lambda01.o: $(SRC)/lambda01.cpp
+	$(CXX) $(CXXFLAGS) -c $(SRC)/lambda01.cpp -o $(OBJ)/lambda01.o
+
+
 # install man pages
 .PHONY: man
 man:
@@ -323,8 +310,8 @@ clean:
 	# -rm -f $(BLD)/$(APP) $(BLD)/*.o $(BLD)/$(APP)_test $(BLD)/bash_color_test
 	# -rm -f $(BLD)/*.xml $(BLD)/$(APP).$(BUILD_VERSION).tar.gz
 	# -rm -f $(BLD)/std_array
-	# -rm -f $(BLD)/read_lines $(BLD)/iter_files $(BLD)/boost_test $(BLD)/boost_regex $(BLD)/regx_replace1
-	# -rm -f $(BLD)/sub_match $(BLD)/sub_match2 $(BLD)/boost_exedir  $(BLD)/dump_ifstream $(BLD)/map_insert
+	# -rm -f $(BLD)/read_lines $(BLD)/iter_files $(BLD)/boost_test $(BLD)/regx_replace1
+	# -rm -f $(BLD)/sub_match $(BLD)/sub_match2 $(BLD)/dump_ifstream $(BLD)/map_insert
 	# -rm -f $(BLD)/gtk_hello
 	# -rm -f $(BLD)/gtk_example-0
 	# -rm -f $(BLD)/template_ex1
