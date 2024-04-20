@@ -11,15 +11,13 @@ STD_OUT ()
     echo -e "${FMT_RED}MAKE${FMT_RESET}: ${FMT_GREEN}$TEXT${FMT_RESET}"
 }
 
-echo
-STD_OUT "clean all output files from \"./build\" and rebuild, log to \"make.log\", (overwrites last) ..."
-echo
+
+STD_OUT "clean all output files from \"./build\" and rebuild, log to \"make.log\", (overwrites last) ...\n"
 make -f makefile clean > make.log
 make -f makefile >> make.log
 
-echo
 STD_OUT "./make.log ..."
 cat make.log
-STD_OUT "EOF"
-echo
+STD_OUT "EOF\n"
+
 STD_OUT "make clean done."
