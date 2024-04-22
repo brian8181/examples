@@ -1,40 +1,19 @@
-# File Name:  streamy.hpp
-# Build Date: Fri Feb  2 04:35:18 AM CST 2024
+# File Name:  makefile
+# Build Date: Sun Apr 21 09:46:46 PM CDT 2024
 # Version:    0.0.1
 
-prefix=/usr/local
-mandir=$(prefix)/share/man
-man1dir=$(mandir)/man1
-
-# Compiler settings - Can be customized.
 CXX=g++
 CC=gcc
 CFLAGS = -std=c99
-CXXFLAGS = -Wall -std=c++20
-CXXFLAGS += -DDEBUG -ggdb
-#CXXFLAGS = -Wall -std=c++11 -std=gnu++17
+CXXFLAGS = -Wall -std=c++20 -DDEBUG -ggdb
 
-# lib settings
-# cppunit IS NOT USED!(USR_SRC)/
-# INCLUDES = -I/usr/local/include/cppunit/
-# add addtional libs here
-#LDFLAGS = -static -llibfmt -L/usr/local/lib64/fmt
-#INCLUDES = -I/usr/local/include/fmt/
-
-# Makefile settings - Can be customized.
-APP=examples
-EXT=cpp
-ROOT=.
-# install correctly or do this /usr/local/lib?
-#USR_SRC = ../$(ROOT)
-BLD=./build
-SRC=$(ROOT)/src
+SRC=src
 OBJ=./build
+BLD=build
 
-# compile & link for debug
-#debug: CXXFLAGS += -DDEBUG -g
-# compile & link for debug GDBversion variable
-#debuggdb: CXXFLAGS += -DDEBUG -ggdb # compile & link
+# INCLUDES = -I/usr/local/include/cppunit/
+# INCLUDES = -I/usr/local/include/fmt/
+# LDFLAGS = -static -llibfmt -L/usr/local/lib64/fmt
 
 all:: $(BLD)/std_array
 # all:: std_array_ex
@@ -85,9 +64,11 @@ all:: regex_search
 all:: unique_ptr_example
 #all:: regex_example
 #all:: udpserver_example
-# all:: mybuf
-##all:: fmtlib.color.ex1.cpp
+#all:: mybuf
+#all:: fmtlib.color.ex1.cpp
 all:: $(BLD)/lambda01
+all:: $(BLD)/copy_assigment
+all:: $(BLD)/system
 
 # test:
 # 	ls $? $(SRC)
@@ -288,40 +269,13 @@ $(BLD)/lambda01: $(OBJ)/lambda01.o
 $(OBJ)/lambda01.o: $(SRC)/lambda01.cpp
 	$(CXX) $(CXXFLAGS) -c $(SRC)/lambda01.cpp -o $(OBJ)/lambda01.o
 
+$(BLD)/copy_assigment: $(SRC)/copy_assigment.cpp
+	$(CXX) $(CXXFLAGS) $(SRC)/copy_assigment.cpp -o $(BLD)/copy_assigment
 
-# install man pages
-.PHONY: man
-man:
-	cp ../man/$(APP).1 $(man1dir)
-	# gzip $(man1dir)/$(APP).1
-	mandb
-
-.PHONY: unman
-unman:
-	rm $(man1dir)/$(APP).1.gz
-	mandb
-
-# install
-.PHONY: install
-install: man
-	cp $(BLD)/$(APP) $(prefix)/bin/$(APP)
-	rm $(prefix)/bin/$(APP)
+$(BLD)/system: $(SRC)/system.cpp
+	$(CXX) $(CXXFLAGS) $(SRC)/system.cpp -o $(BLD)/system
 
 # delete object files & app executable
 .PHONY: clean
 clean:
 	-rm $(BLD)/*
-	# -rm -f $(BLD)/$(APP) $(BLD)/*.o $(BLD)/$(APP)_test $(BLD)/bash_color_test
-	# -rm -f $(BLD)/*.xml $(BLD)/$(APP).$(BUILD_VERSION).tar.gz
-	# -rm -f $(BLD)/std_array
-	# -rm -f $(BLD)/read_lines $(BLD)/iter_files $(BLD)/boost_test $(BLD)/regx_replace1
-	# -rm -f $(BLD)/sub_match $(BLD)/sub_match2 $(BLD)/dump_ifstream $(BLD)/map_insert
-	# -rm -f $(BLD)/gtk_hello
-	# -rm -f $(BLD)/gtk_example-0
-	# -rm -f $(BLD)/template_ex1
-	# -rm -f $(BLD)/string_view_test
-	# -rm -f $(BLD)/math_consts
-	# -rm -f $(BLD)/faq1.1
-	# -rm -f $(BLD)/faq1.2
-	# -rm -f $(BLD)/fmtlib.ex1
-	# -rm -f $(BLD)/fmtlib.playn
