@@ -1,57 +1,45 @@
-rm ./build/*
-# -rm -f ./build/examples ./build/*.o ./build/examples_test ./build/bash_color_test
-# -rm -f ./build/*.xml ./build/examples..tar.gz
-# -rm -f ./build/std_array
-# -rm -f ./build/read_lines ./build/iter_files ./build/boost_test ./build/regx_replace1
-# -rm -f ./build/sub_match ./build/sub_match2 ./build/dump_ifstream ./build/map_insert
-# -rm -f ./build/gtk_hello
-# -rm -f ./build/gtk_example-0
-# -rm -f ./build/template_ex1
-# -rm -f ./build/string_view_test
-# -rm -f ./build/math_consts
-# -rm -f ./build/faq1.1
-# -rm -f ./build/faq1.2
-# -rm -f ./build/fmtlib.ex1
-# -rm -f ./build/fmtlib.playn
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/std_array.cpp -o ./build/std_array
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/faq1.1.cpp -o ./build/faq1.1
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/faq1.2.cpp -o ./build/faq1.2
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/read_lines.cpp -o ./build/read_lines
-g++ -Wall -std=c++20 -DDEBUG -ggdb -I ~/src/boost_1_79_0 ./src/bfs-example.cpp -o ./build/bfs-example
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/regx_replace1.cpp -o ./build/regx_replace1
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/sub_match.cpp -o ./build/sub_match
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/sub_match2.cpp -o ./build/sub_match2
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/dump_ifstream.cpp ./src/utility.cpp -o ./build/dump_ifstream
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/map_insert.cpp -o ./build/map_insert
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/template_ex1.cpp -o ./build/template_ex1
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o ./build/fmtlib.ex1
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o ./build/fmtlib.play
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/string_view_test.cpp -o ./build/string_view_test
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/math_consts.cpp -o ./build/math_consts
-gcc -std=c99 ./src/cfilesys.c -o ./build/cfilesys
-gcc -std=c99 ./src/atoi_itoa.c -o ./build/atoi_itoa
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/istream.cpp -o ./build/istream
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./src/threads_ex1.cpp -o ./build/threads_ex1
-gcc ./src/pipe_timeout.c -o ./build/pipe_timeout
-gcc ./src/signal_ex3.c -o ./build/signal_ex3
-g++ ./src/vla_basic.c -o ./build/vla_basic
-g++ ./src/vla_sizeof.c -o ./build/vla_sizeof
-gcc ./src/vla_pass_mutivla.c -o ./build/vla_pass_mutivla
-gcc ./src/vla_typedef.c -o ./build/vla_typedef
-gcc ./src/signals_ex1.c -o ./build/signals_ex1
-gcc ./src/signals_ex4.c -o ./build/signals_ex4
-g++ ./src/std_hex.cpp -o ./build/std_hex
-g++ ./src/std_find_string.cpp -o ./build/std_find_string
-g++ ./src/std_find.cpp -o ./build/std_find
-g++ ./src/dice_unifrom_distribution.cpp -o ./build/dice_unifrom_distribution
-g++ ./src/get_current_dir.cpp -o ./build/get_current_dir
-g++ ./src/stringstream_ex1.cpp -o ./build/stringstream_ex1
-g++ ./src/constexpr_ex.cpp -o ./build/constexpr_ex
-g++ ./src/char2string.cpp -o ./build/char2string
-g++ ./src/filesystem_current_directory.cpp -o ./build/filesystem_current_directory
-g++ ./src/stl_set_difference.cpp -o ./build/stl_set_difference
-g++ ./src/strtok.cpp -o ./build/strtok
-g++ ./src/regex_search.cpp -o ./build/regex_search
-g++ ./src/unique_ptr_example.cpp -o ./build/unique_ptr_example
-g++ -Wall -std=c++20 -DDEBUG -ggdb -c ./src/lambda01.cpp -o ./build/lambda01.o
-g++ -Wall -std=c++20 -DDEBUG -ggdb ./build/lambda01.o -o ./build/lambda01
+rm build/*
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/std_array.cpp -o build/std_array
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/faq1.1.cpp -o build/faq1.1
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/faq1.2.cpp -o build/faq1.2
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/read_lines.cpp -o build/read_lines
+g++ -Wall -std=c++20 -DDEBUG -ggdb -I ~/src/boost_1_79_0 src/bfs-example.cpp -o build/bfs-example
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/regx_replace1.cpp -o build/regx_replace1
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/sub_match.cpp -o build/sub_match
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/sub_match2.cpp -o build/sub_match2
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/dump_ifstream.cpp src/utility.cpp -o build/dump_ifstream
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/map_insert.cpp -o build/map_insert
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/template_ex1.cpp -o build/template_ex1
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/fmtlib.ex1.cpp /usr/local/lib64/libfmt.a -o build/fmtlib.ex1
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o build/fmtlib.play
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/string_view_test.cpp -o build/string_view_test
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/math_consts.cpp -o build/math_consts
+gcc -std=c99 src/cfilesys.c -o build/cfilesys
+gcc -std=c99 src/atoi_itoa.c -o build/atoi_itoa
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/istream.cpp -o build/istream
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/threads_ex1.cpp -o build/threads_ex1
+gcc src/pipe_timeout.c -o build/pipe_timeout
+gcc src/signal_ex3.c -o build/signal_ex3
+g++ src/vla_basic.c -o build/vla_basic
+g++ src/vla_sizeof.c -o build/vla_sizeof
+gcc src/vla_pass_mutivla.c -o build/vla_pass_mutivla
+gcc src/vla_typedef.c -o build/vla_typedef
+gcc src/signals_ex1.c -o build/signals_ex1
+gcc src/signals_ex4.c -o build/signals_ex4
+g++ src/std_hex.cpp -o build/std_hex
+g++ src/std_find_string.cpp -o build/std_find_string
+g++ src/std_find.cpp -o build/std_find
+g++ src/dice_unifrom_distribution.cpp -o build/dice_unifrom_distribution
+g++ src/get_current_dir.cpp -o build/get_current_dir
+g++ src/stringstream_ex1.cpp -o build/stringstream_ex1
+g++ src/constexpr_ex.cpp -o build/constexpr_ex
+g++ src/char2string.cpp -o build/char2string
+g++ src/filesystem_current_directory.cpp -o build/filesystem_current_directory
+g++ src/stl_set_difference.cpp -o build/stl_set_difference
+g++ src/strtok.cpp -o build/strtok
+g++ src/regex_search.cpp -o build/regex_search
+g++ src/unique_ptr_example.cpp -o build/unique_ptr_example
+g++ -Wall -std=c++20 -DDEBUG -ggdb -c src/lambda01.cpp -o ./build/lambda01.o
+g++ -Wall -std=c++20 -DDEBUG -ggdb ./build/lambda01.o -o build/lambda01
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/copy_assigment.cpp -o build/copy_assigment
+g++ -Wall -std=c++20 -DDEBUG -ggdb src/system.cpp -o build/system
