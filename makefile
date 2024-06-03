@@ -69,6 +69,7 @@ all:: unique_ptr_example
 all:: $(BLD)/lambda01
 all:: $(BLD)/copy_assigment
 all:: $(BLD)/system
+all:: $(BLD)/is_integer
 
 # test:
 # 	ls $? $(SRC)
@@ -274,6 +275,9 @@ $(BLD)/copy_assigment: $(SRC)/copy_assigment.cpp
 
 $(BLD)/system: $(SRC)/system.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/system.cpp -o $(BLD)/system
+
+$(BLD)/is_integer: $(SRC)/is_integer.cpp
+	$(CXX) $(CXXFLAGS) $(SRC)/is_integer.cpp -o $(BLD)/is_integer
 
 # delete object files & app executable
 .PHONY: clean
