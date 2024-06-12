@@ -16,14 +16,15 @@ BLD=build
 # LDFLAGS = -static -llibfmt -L/usr/local/lib64/fmt
 
 all:: $(BLD)/std_array
-# all:: std_array_ex
+#all:: std_array_ex
 all:: $(BLD)/faq1.1 $(BLD)/faq1.2
 all:: $(BLD)/read_lines
 #all:: iter_files
 # all:: $(BLD)/boost_io
-# all:: $(BLD)/boost_parse_xml
-# all:: $(BLD)/boost_circular_buffer
-# all:: $(BLD)/boost_regex_match
+all:: $(BLD)/boost_parse_xml
+all:: $(BLD)/boost_circular_buffer
+all:: $(BLD)/boost_regex_match
+all:: $(BLD)/boost_email_example
 all:: $(BLD)/bfs-example
 # all:: $(BLD)/bfs-example2
 all:: $(BLD)/regx_replace1
@@ -105,6 +106,10 @@ $(BLD)/bfs-example2: $(SRC)/bfs-example2.cpp
 
 $(BLD)/boost_circular_buffer: $(SRC)/boost_circular_buffer.cpp
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_circular_buffer.cpp -o $(BLD)/boost_circular_buffer
+
+$(BLD)/boost_email_example: $(SRC)/boost_email_example.cpp
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_email_example.cpp -o $(BLD)/boost_email_example
+
 
 $(BLD)/regx_replace1: $(SRC)/regx_replace1.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
