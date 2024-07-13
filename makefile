@@ -31,7 +31,9 @@ all:: $(BLD)/regx_replace1
 all::  $(BLD)/sub_match $(BLD)/sub_match $(BLD)/sub_match2
 all:: $(BLD)/dump_ifstream $(BLD)/map_insert
 all:: $(BLD)/template_ex1
+# all:: $(BLD)/std_format $(BLD)/stl_format
 all:: $(BLD)/fmtlib.ex1 $(BLD)/fmtlib.play
+# all:: $(BLD)/std_custom_formatter
 all:: $(BLD)/string_view_test $(BLD)/math_consts
 all:: $(BLD)/cfilesys $(BLD)/atoi_itoa
 all:: $(BLD)/istream
@@ -152,6 +154,9 @@ $(BLD)/gtk_example-0: $(SRC)/gtk_hello.c
 	@echo "MAKE RULE - gtk_example-0: disabled"
 	#gcc `pkg-config --cflags gtk+-3.0` -o $(BLD)/gtk_example-0 $(SRC)/gtk_example-0.c `pkg-config --libs gtk+-3.0`
 
+$(BLD)/std_format: $(SRC)/std_format.cpp
+	$(CXX) $(CXXFLAGS) $(SRC)/std_format.cpp -o $(BLD)/std_format
+
 $(BLD)/stl_format: $(SRC)/stl_format.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/stl_format.cpp -o $(BLD)/stl_format
 
@@ -160,6 +165,9 @@ $(BLD)/fmtlib.ex1: $(SRC)/stl_format.cpp
 
 $(BLD)/fmtlib.play: $(SRC)/fmtlib.play.cpp /usr/local/lib64/libfmt.a
 	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.play.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.play
+
+$(BLD)/custom_formater: $(SRC)/custom_formater.cpp /usr/local/lib64/libfmt.a
+	$(CXX) $(CXXFLAGS) $(SRC)/custom_formater.cpp /usr/local/lib64/libfmt.a -o $(BLD)/custom_formater
 
 $(BLD)/fmtlib.color.ex1.cpp: $(SRC)/fmtlib.color.ex1.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/fmtlib.color.ex1.cpp /usr/local/lib64/libfmt.a -o $(BLD)/fmtlib.color.ex1
