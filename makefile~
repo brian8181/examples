@@ -77,7 +77,6 @@ all:: $(BLD)/copy_assigment
 all:: $(BLD)/system
 all:: $(BLD)/is_integer
 all:: $(BLD)/std_thread
-all:: $(BLD)/iomanip_ex
 
 # test:
 # 	ls $? $(SRC)
@@ -123,12 +122,7 @@ $(BLD)/boost_circular_buffer: $(SRC)/boost_circular_buffer.cpp
 $(BLD)/boost_email_example: $(SRC)/boost_email_example.cpp
 	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_email_example.cpp -o $(BLD)/boost_email_example
 
-$(BLD)/iomanip_ex: $(OBJ)/iomanip_ex.o
-	 $(CXX) $(CXXFLAGS) $^ -o $@
 
-$(OBJ)/iomanip_ex.o: $(SRC)/iomanip_ex.cpp
-	$(CXX) $(CXXFLAGS) -c $^ -o $@
-	
 $(BLD)/regx_replace1: $(SRC)/regx_replace1.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
 
