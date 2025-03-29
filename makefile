@@ -41,7 +41,7 @@ all:: $(BLD)/cfilesys $(BLD)/atoi_itoa
 all:: $(BLD)/istream
 all:: $(BLD)/threads_ex1
 all:: $(BLD)/gtk_hello $(BLD)/gtk_example-0 #$(BLD)/hello-world-gtk
-all:: 
+all::
 #all:: valarray_ex
 all:: $(BLD)/pipe_timeout
 all:: $(BLD)/signal_ex3
@@ -67,7 +67,8 @@ all:: filesystem_current_directory
 all:: stl_set_difference
 all:: strtok
 all:: regex_search
-all:: unique_ptr_example
+all:: $(BLD)/unique_ptr_example
+all:: $(BLD)/unique_ptr_ex1
 #all:: regex_example
 #all:: udpserver_example
 #all:: mybuf
@@ -78,6 +79,7 @@ all:: $(BLD)/system
 all:: $(BLD)/is_integer
 all:: $(BLD)/std_thread
 all:: $(BLD)/iomanip_ex
+all:: $(BLD)/hello_ncurses
 
 # test:
 # 	ls $? $(SRC)
@@ -128,7 +130,7 @@ $(BLD)/iomanip_ex: $(OBJ)/iomanip_ex.o
 
 $(OBJ)/iomanip_ex.o: $(SRC)/iomanip_ex.cpp
 	$(CXX) $(CXXFLAGS) -c $^ -o $@
-	
+
 $(BLD)/regx_replace1: $(SRC)/regx_replace1.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
 
@@ -281,8 +283,11 @@ strtok:
 regex_search:
 		$(CXX) $(SRC)/regex_search.cpp -o $(BLD)/regex_search
 
-unique_ptr_example:
+$(BLD)/unique_ptr_example:
 		$(CXX) $(SRC)/unique_ptr_example.cpp -o $(BLD)/unique_ptr_example
+
+$(BLD)/unique_ptr_ex1:
+		$(CXX) $(SRC)/unique_ptr_ex1.cpp -o $(BLD)/unique_ptr_ex1
 
 regex_example:
 	$(CC) $(SRC)/regex_example.cpp -o $(BLD)/regex_example
@@ -303,7 +308,7 @@ $(OBJ)/lambda01.o: $(SRC)/lambda01.cpp
 	$(CXX) $(CXXFLAGS) -c $(SRC)/lambda01.cpp -o $(OBJ)/lambda01.o
 
 $(BLD)/copy_assigment: $(SRC)/copy_assigment.cpp
-	$(CXX) $(CXXFLAGS) $(SRC)/copy_assigment.cpp -o $(BLD)/copy_assigment 
+	$(CXX) $(CXXFLAGS) $(SRC)/copy_assigment.cpp -o $(BLD)/copy_assigment
 
 $(BLD)/system: $(SRC)/system.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/system.cpp -o $(BLD)/system
@@ -313,6 +318,11 @@ $(BLD)/is_integer: $(SRC)/is_integer.cpp
 
 $(BLD)/std_thread: $(SRC)/std_thread.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/std_thread.cpp -o $(BLD)/std_thread
+
+
+$(BLD)/hello_ncurses: $(SRC)/hello_ncurses.c
+	gcc $(SRC)/hello_ncurses.c -lncurses -o hello_ncurses
+
 
 # delete object files & app executable
 .PHONY: clean
