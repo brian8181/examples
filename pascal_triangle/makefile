@@ -21,23 +21,23 @@ ifdef CYGWIN
 	CXXFLAGS += -DCYGWIN
 endif
 
-all: ./$(BLD)/pascal_triangle ./$(BLD)/libpascal_triangle.so ./$(BLD)/libpascal_triangle.a
+all: ./$(BLD)/pascal_triangle #./$(BLD)/libpascal_triangle.so ./$(BLD)/libpascal_triangle.a
 
 rebuild: clean all
 
-./$(BLD)/pascal_triangle: ./$(OBJ)/pascal_triangle.o #CCSK_PREREQUISTE#
-	 $(CXX) $(CXXFLAGS) -o ./$(BLD)/pascal_triangle ./$(OBJ)/pascal_triangle.o #CCSK_PREREQUISTE#
+./$(BLD)/pascal_triangle: ./$(OBJ)/pascal_triangle.o 
+	 $(CXX) $(CXXFLAGS) ./$(OBJ)/pascal_triangle.o -o ./$(BLD)/pascal_triangle
 
 #./$(BLD)/pascal_triangle_test: ./$(OBJ)/pascal_triangle_test.o #CCSK_PREREQUISTE#
 #	 $(CXX) $(CXXFLAGS) -o ./$(BLD)/pascal_triangle_test ./$(OBJ)/pascal_triangle_test.o #CCSK_PREREQUISTE#
 
-./$(BLD)/libpascal_triangle.so: ./$(BLD)/pascal_triangle.o
-	$(CXX) $(CXXFLAGS) $(CXXEXTRA) --shared ./$(BLD)/pascal_triangle.o -o ./$(BLD)/libpascal_triangle.so
-	-chmod 755 ./$(BLD)/libpascal_triangle.so
+# ./$(BLD)/libpascal_triangle.so: ./$(BLD)/pascal_triangle.o
+# 	$(CXX) $(CXXFLAGS) $(CXXEXTRA) --shared ./$(BLD)/pascal_triangle.o -o ./$(BLD)/libpascal_triangle.so
+# 	-chmod 755 ./$(BLD)/libpascal_triangle.so
 
-./$(BLD)/libpascal_triangle.a: ./$(BLD)/pascal_triangle.o
-	-ar rvs ./$(BLD)/libpascal_triangle.a ./$(BLD)/pascal_triangle.o
-	-chmod 755 ./$(BLD)/libpascal_triangle.a
+# ./$(BLD)/libpascal_triangle.a: ./$(BLD)/pascal_triangle.o
+# 	-ar rvs ./$(BLD)/libpascal_triangle.a ./$(BLD)/pascal_triangle.o
+#	-chmod 755 ./$(BLD)/libpascal_triangle.a
 
 ./$(OBJ)/%.o: ./$(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<

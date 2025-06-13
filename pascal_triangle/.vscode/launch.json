@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/pascal_triangle",
             "args": ["10"],
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
