@@ -80,6 +80,7 @@ all:: $(BLD)/is_integer
 all:: $(BLD)/std_thread
 all:: $(BLD)/iomanip_ex
 all:: $(BLD)/hello_ncurses
+all:: $(BLD)/modulated_loop
 
 # test:
 # 	ls $? $(SRC)
@@ -322,6 +323,9 @@ $(BLD)/std_thread: $(SRC)/std_thread.cpp
 
 $(BLD)/hello_ncurses: $(SRC)/hello_ncurses.c
 	gcc $(SRC)/hello_ncurses.c -lncurses -o hello_ncurses
+
+$(BLD)/modulated_loop:
+	$(CXX) $(CXXFLAGS) $(SRC)/modulated_loop.cpp -o $(BLD)/modulated_loop
 
 
 # delete object files & app executable

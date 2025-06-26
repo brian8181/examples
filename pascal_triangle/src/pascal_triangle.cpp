@@ -110,6 +110,9 @@ int parse_options(int argc, char* argv[])
 	string path = argv[0];   // get exe file path
 	cout << argv[0] << endl; 
 
+	if(argc < 2)
+		return 0;
+
 	std::vector< std::vector<int> > triangle = { {1,1} };
 			
 	int rows = atoi( argv[1] );
@@ -138,9 +141,11 @@ int parse_options(int argc, char* argv[])
 	 		cout << triangle[i][j] << ".*x.^" << x << ".*y.^" << y << " + ";
 	 	}
 		cout << std::endl;
-	 }
+	}
 
-	print_coffs( atoi(argv[2]) );
+	if(argc > 2)
+		print_coffs( atoi(argv[2]) );
+
 	return 0;
 }
 
