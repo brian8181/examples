@@ -1,0 +1,71 @@
+# File Name:  balanced_tree/makefile
+# Build Date: Wed Apr 23 22:44:01 CDT 2025
+# Version:    0.1.1
+
+APP=balanced_tree
+CXX=g++
+CXXFLAGS=-Wall -std=c++20 -fPIC -g
+SRC=src
+BLD?=build
+OBJ?=build
+
+# lib settings
+LDFLAGS = -static -lcppunit -L/usr/local/lib/
+INCLUDES = -I/usr/local/include/cppunit/
+
+ifdef DEBUG
+	CXXFLAGS +=-g -DDEBUG
+endif
+
+ifdef CYGWIN
+	CXXFLAGS += -DCYGWIN
+endif
+
+all: ./$(BLD)/balanced_tree #./$(BLD)/libbalanced_tree.so ./$(BLD)/libbalanced_tree.a
+
+rebuild: clean all
+
+./$(BLD)/balanced_tree: ./$(OBJ)/balanced_tree.o 
+	 $(CXX) $(CXXFLAGS) ./$(OBJ)/balanced_tree.o -o ./$(BLD)/balanced_tree
+
+#./$(BLD)/balanced_tree_test: ./$(OBJ)/balanced_tree_test.o #CCSK_PREREQUISTE#
+#	 $(CXX) $(CXXFLAGS) -o ./$(BLD)/balanced_tree_test ./$(OBJ)/balanced_tree_test.o #CCSK_PREREQUISTE#
+
+# ./$(BLD)/libbalanced_tree.so: ./$(BLD)/balanced_tree.o
+# 	$(CXX) $(CXXFLAGS) $(CXXEXTRA) --shared ./$(BLD)/balanced_tree.o -o ./$(BLD)/libbalanced_tree.so
+# 	-chmod 755 ./$(BLD)/libbalanced_tree.so
+
+# ./$(BLD)/libbalanced_tree.a: ./$(BLD)/balanced_tree.o
+# 	-ar rvs ./$(BLD)/libbalanced_tree.a ./$(BLD)/balanced_tree.o
+#	-chmod 755 ./$(BLD)/libbalanced_tree.a
+
+./$(OBJ)/%.o: ./$(SRC)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+#CCSK_RULE#
+
+.PHONY: install
+install:
+	cp ./$(BLD)/balanced_tree ./$(prefix)/bin/balanced_tree
+
+.PHONY: uninstall
+uninstall:
+	-rm ./$(prefix)/bin/balanced_tree
+
+.PHONY: clean
+clean:
+	-rm -f ./$(OBJ)/*.o
+	-rm -f ./$(BLD)/*.o
+	-rm -f ./$(BLD)/balanced_tree*
+
+
+.PHONY: help
+help:
+	@echo  '  all         - build all'
+	@echo  '  balanced_tree          - build balanced_tree executable'
+	@echo  '  balanced_tree.o        - build not link'
+	@echo  '  balanced_tree_test     - build cppunit test'
+	@echo  '  balanced_tree_test.o   - build cppunit test'
+	@echo  '  clean                      - remove all files from build dir'
+	@echo  '  install                    - copy files to usr/local'
+	@echo  '  dist                       - create distribution, tar.gz'

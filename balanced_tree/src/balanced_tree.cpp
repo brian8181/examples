@@ -46,42 +46,9 @@ void print_help()
 {
 	cout	<< endl 
 			<< FMT_BOLD      << FMT_FG_GREEN << "Usage: " << FMT_RESET << endl
-			<< FMT_BOLD      << "/*~${APP_NAME}~*/" << FMT_RESET << " "
+			<< FMT_BOLD      << /*~ "${APP_NAME}"         << ~*/ FMT_RESET << " "
 			<< FMT_FG_BLUE   << "[-hvr][...]"             << FMT_RESET << " "
          												  <<  endl << endl;
-}
-
-string print_coffs(int n)
-{
-	std::vector< std::vector<int> > triangle = { {1,1} };
-		
-	for(int i = 1; i < n; ++i)
-	{
-		int len = triangle[i-1].size();
-		std::vector<int> next(len + 1);
-		next[0] = 1;
-		for(int j = 1; j < len; ++j)
-		{
-		 	next[j] = triangle[i-1][j-1] + triangle[i-1][j];
-		}
-		next[len] = 1; 
-		triangle.push_back(next);
-	}
-
-	stringstream ss;
-	int nlen = triangle[n-1].size();
-	int j = 0;
-	for(; j < nlen; ++j)
-	{
-		int y = j;
-		int x = nlen - (j+1);
-		ss << triangle[n-1][j] << ".*x.^" << x << ".*y.^" << y << " + ";
-	}
-	string s = ss.str();
-	s.resize(s.size()-2);
-	cout << s << std::endl;
-
-	return s;
 }
 
 int parse_options(int argc, char* argv[])
@@ -109,42 +76,6 @@ int parse_options(int argc, char* argv[])
 
 	string path = argv[0];   // get exe file path
 	cout << argv[0] << endl; 
-
-	if(argc < 2)
-		return 0;
-
-	std::vector< std::vector<int> > triangle = { {1,1} };
-			
-	int rows = atoi( argv[1] );
-	for(int i = 1; i < rows; ++i)
-	{
-		int len = triangle[i-1].size();
-		std::vector<int> next(len + 1);
-		next[0] = 1;
-		for(int j = 1; j < len; ++j)
-		{
-		 	next[j] = triangle[i-1][j-1] + triangle[i-1][j];
-		}
-		next[len] = 1; 
-		triangle.push_back(next);
-	}
-
-	int mlen = triangle.size();
-	for(int i = 0; i < mlen; ++i)
-	{
-	 	int nlen = triangle[i].size();
-	 	int j = 0;
-	 	for(; j < nlen; ++j)
-	 	{
-			int y = j;
-			int x = nlen - (j+1);
-	 		cout << triangle[i][j] << ".*x.^" << x << ".*y.^" << y << " + ";
-	 	}
-		cout << std::endl;
-	}
-
-	if(argc > 2)
-		print_coffs( atoi(argv[2]) );
 
 	return 0;
 }
