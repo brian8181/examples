@@ -25,11 +25,11 @@ all: ./$(BLD)/balanced_tree #./$(BLD)/libbalanced_tree.so ./$(BLD)/libbalanced_t
 
 rebuild: clean all
 
-./$(BLD)/balanced_tree: ./$(OBJ)/balanced_tree.o 
-	 $(CXX) $(CXXFLAGS) ./$(OBJ)/balanced_tree.o -o ./$(BLD)/balanced_tree
+./$(BLD)/balanced_tree: ./$(OBJ)/balanced_tree.o $(BLD)/tree.o $(BLD)/node.o
+	 $(CXX) $(CXXFLAGS) ./$(OBJ)/balanced_tree.o $(BLD)/tree.o $(BLD)/node.o -o ./$(BLD)/balanced_tree
 
-#./$(BLD)/balanced_tree_test: ./$(OBJ)/balanced_tree_test.o #CCSK_PREREQUISTE#
-#	 $(CXX) $(CXXFLAGS) -o ./$(BLD)/balanced_tree_test ./$(OBJ)/balanced_tree_test.o #CCSK_PREREQUISTE#
+#./$(BLD)/balanced_tree_test: ./$(OBJ)/balanced_tree_test.o $(BLD)/tree.o $(BLD)/node.o #CCSK_PREREQUISTE#
+#	 $(CXX) $(CXXFLAGS) -o ./$(BLD)/balanced_tree_test ./$(OBJ)/balanced_tree_test.o $(BLD)/tree.o $(BLD)/node.o #CCSK_PREREQUISTE#
 
 # ./$(BLD)/libbalanced_tree.so: ./$(BLD)/balanced_tree.o
 # 	$(CXX) $(CXXFLAGS) $(CXXEXTRA) --shared ./$(BLD)/balanced_tree.o -o ./$(BLD)/libbalanced_tree.so
@@ -41,6 +41,12 @@ rebuild: clean all
 
 ./$(OBJ)/%.o: ./$(SRC)/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BLD)/tree.o: $(SRC)/tree.cpp 
+	 $(CXX) $(CXXFLAGS) -c $(SRC)/tree.cpp -o $(BLD)/tree.o 
+
+$(BLD)/node.o: $(SRC)/node.cpp 
+	 $(CXX) $(CXXFLAGS) -c $(SRC)/node.cpp -o $(BLD)/node.o 
 
 #CCSK_RULE#
 
