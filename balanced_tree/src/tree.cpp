@@ -19,3 +19,18 @@ bool tree::operator<( const tree& that)
 {
     return false;
 }
+
+void tree::insert()
+{
+
+}
+
+void tree::remove()
+{
+
+}
+
+void tree::find()
+{
+    
+}

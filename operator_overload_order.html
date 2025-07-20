@@ -1,0 +1,33 @@
+<html>
+    <head></head>
+    <body>
+        
+        <h3>Typically, once operator< is provided, the other relational operators are implemented in terms of operator<.</h3>
+
+        <code>
+        inline bool operator< (const X& lhs, const X& rhs) { /* do actual comparison */ }<br />
+        inline bool operator> (const X& lhs, const X& rhs) { return rhs < lhs; }<br />
+        inline bool operator<=(const X& lhs, const X& rhs) { return !(lhs > rhs); }<br />
+        inline bool operator>=(const X& lhs, const X& rhs) { return !(lhs < rhs); }<br />
+        </code>
+
+        <h3>likewise, the inequality operator is typically implemented in terms of operator==:</h3>
+
+        <code>
+        inline bool operator==(const X& lhs, const X& rhs) { /* do actual comparison */ }<br />
+        inline bool operator!=(const X& lhs, const X& rhs) { return !(lhs == rhs); }<br />
+        </code>
+
+        <h3>When three-way comparison (such as std::memcmp or std::string::compare) is provided, all six two-way comparison operators may be expressed through that:</h3>
+
+        <code>
+        inline bool operator==(const X& lhs, const X& rhs) { return cmp(lhs,rhs) == 0; }<br />
+        inline bool operator!=(const X& lhs, const X& rhs) { return cmp(lhs,rhs) != 0; }<br />
+        inline bool operator< (const X& lhs, const X& rhs) { return cmp(lhs,rhs) <  0; }<br />
+        inline bool operator> (const X& lhs, const X& rhs) { return cmp(lhs,rhs) >  0; }<br />
+        inline bool operator<=(const X& lhs, const X& rhs) { return cmp(lhs,rhs) <= 0; }<br />
+        inline bool operator>=(const X& lhs, const X& rhs) { return cmp(lhs,rhs) >=<br />
+        </code>
+     
+    </body>
+</html>
