@@ -76,6 +76,7 @@ int parse_options(int argc, char* argv[])
 
 	string path = argv[0];   // get exe file path
 	cout << argv[0] << endl; 
+	
 
 	return 0;
 }
