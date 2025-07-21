@@ -12,6 +12,7 @@
 #include <vector>
 #include <sstream>
 #include "bash_color.hpp"
+#include "tree.hpp"
 
 using std::string;
 using std::stringstream;
@@ -28,6 +29,12 @@ const unsigned short FIELDS           = 0x02;
 unsigned short options = DEFAULTS;
 char DELIMITER = ',';
 
+#ifdef DEBUG
+	#define log_(s) log(s)
+	#else
+	#define log_(s) // log
+#endif
+
 static struct option long_options[] =
 {
         {"verbose", no_argument, 0, 'v'},
@@ -36,6 +43,11 @@ static struct option long_options[] =
 };
 
 unsigned short OPTION_FLAGS = DEFAULTS;
+
+void log(string s)
+{
+	cout << s << endl;
+}
 
 void print_version()
 {
@@ -77,9 +89,16 @@ int parse_options(int argc, char* argv[])
 	string path = argv[0];   // get exe file path
 	cout << argv[0] << endl; 
 	
+	tree<int> t;
+
+	stringstream ss;
+	ss << "Boo! - " << " file:" << __FILE__ << " line:" << __LINE__ << endl;
+	string s = ss.str();
+	log_(s);
 
 	return 0;
 }
+
 
 
 int stdin_ready (int filedes)

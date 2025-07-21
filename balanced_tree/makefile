@@ -14,11 +14,11 @@ LDFLAGS = -static -lcppunit -L/usr/local/lib/
 INCLUDES = -I/usr/local/include/cppunit/
 
 ifdef DEBUG
-	CXXFLAGS +=-g -DDEBUG
+	CXXFLAGS +=-DDEBUG
 endif
 
 ifdef CYGWIN
-	CXXFLAGS += -DCYGWIN
+	CXXFLAGS +=-DCYGWIN
 endif
 
 all: ./$(BLD)/balanced_tree #./$(BLD)/libbalanced_tree.so ./$(BLD)/libbalanced_tree.a
@@ -63,7 +63,6 @@ clean:
 	-rm -f ./$(OBJ)/*.o
 	-rm -f ./$(BLD)/*.o
 	-rm -f ./$(BLD)/balanced_tree*
-
 
 .PHONY: help
 help:
