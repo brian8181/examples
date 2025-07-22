@@ -54,7 +54,6 @@ void print_help()
 string print_coffs(int n)
 {
 	std::vector< std::vector<int> > triangle = { {1,1} };
-		
 	for(int i = 1; i < n; ++i)
 	{
 		int len = triangle[i-1].size();
@@ -145,10 +144,8 @@ int parse_options(int argc, char* argv[])
 
 	if(argc > 2)
 		print_coffs( atoi(argv[2]) );
-
 	return 0;
 }
-
 
 int stdin_ready (int filedes)
 {
@@ -166,7 +163,6 @@ int stdin_ready (int filedes)
 	return select(filedes + 1, &set, NULL, NULL, &timeout);
 #endif
 }
-
 
 int main(int argc, char* argv[])
 {
