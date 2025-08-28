@@ -25,6 +25,9 @@ const int DEFAULT_ARGC = 0;
 const unsigned short VERBOSE          = 0x01;
 const unsigned short DEFAULTS         = 0x00;
 const unsigned short FIELDS           = 0x02;
+const unsigned short COEFF            = 0x04;
+const unsigned short TRIANGLE         = 0x08;
+const unsigned short NO_ONES          = 0x10;
 unsigned short options = DEFAULTS;
 char DELIMITER = ',';
 
@@ -33,7 +36,11 @@ static struct option long_options[] =
         {"verbose", no_argument, 0, 'v'},
         {"help", no_argument, 0, 'h'},
         {"version", no_argument, 0, 'r'},
+		{"coeff", no_argument, 0, 'c'},
+		{"triangle", no_argument, 0, 't'},
+		{"no_ones", no_argument, 0, 'n'}
 };
+
 
 unsigned short OPTION_FLAGS = DEFAULTS;
 
@@ -44,7 +51,7 @@ void print_version()
 
 void print_help()
 {
-	cout	<< endl 
+	cout	<< endl
 			<< FMT_BOLD      << FMT_FG_GREEN << "Usage: " << FMT_RESET << endl
 			<< FMT_BOLD      << "/*~${APP_NAME}~*/" << FMT_RESET << " "
 			<< FMT_FG_BLUE   << "[-hvr][...]"             << FMT_RESET << " "
@@ -63,7 +70,7 @@ string print_coffs(int n)
 		{
 		 	next[j] = triangle[i-1][j-1] + triangle[i-1][j];
 		}
-		next[len] = 1; 
+		next[len] = 1;
 		triangle.push_back(next);
 	}
 
@@ -88,7 +95,7 @@ int parse_options(int argc, char* argv[])
 	int opt = 0;
 	int option_index = 0;
 	optind = 0;
-	while ((opt = getopt_long(argc, argv, "hv ", long_options, &option_index)) != -1)
+	while ((opt = getopt_long(argc, argv, "hvcytn ", long_options, &option_index)) != -1)
 	{
 		switch (opt)
 		{
@@ -97,53 +104,71 @@ int parse_options(int argc, char* argv[])
 			case 'v':
 				print_version();
 				return 0;
+			case 'c':
+				OPTION_FLAGS |= COEFF;
+				break;
+			case 't':
+				OPTION_FLAGS |= TRIANGLE;
+				break;
+			case 'n':
+				OPTION_FLAGS |= NO_ONES;
+				break;
+
 		}
 	}
 
-	if (argc < DEFAULT_ARGC) // not correct number of args
+	// if (argc < DEFAULT_ARGC) // not correct number of args
+	// {
+	// 	cerr << "Expected argument after options, -h for help" << endl;
+	// 	return -1;
+	// }
+
+	// if(argc < optind + 1) // not correct number of args
+	//  	return -1;
+
+	cout << argv[optind] << endl;
+	cout << "Coefficient flag is set: " << (OPTION_FLAGS & COEFF) << endl;
+
+	if(OPTION_FLAGS & TRIANGLE)
 	{
-		cerr << "Expected argument after options, -h for help" << endl;
-		return -1;
-	}
-
-	string path = argv[0];   // get exe file path
-	cout << argv[0] << endl; 
-
-	if(argc < 2)
-		return 0;
-
-	std::vector< std::vector<int> > triangle = { {1,1} };
-			
-	int rows = atoi( argv[1] );
-	for(int i = 1; i < rows; ++i)
-	{
-		int len = triangle[i-1].size();
-		std::vector<int> next(len + 1);
-		next[0] = 1;
-		for(int j = 1; j < len; ++j)
+		std::vector< std::vector<int> > triangle = { {1,1} };
+		int rows = atoi( argv[optind] );
+		for(int i = 1; i < rows; ++i)
 		{
-		 	next[j] = triangle[i-1][j-1] + triangle[i-1][j];
+			int len = triangle[i-1].size();
+			std::vector<int> next(len + 1);
+			next[0] = 1;
+			if(!(OPTION_FLAGS & NO_ONES))
+				cout << "1 + ";
+			for(int j = 1; j < len; ++j)
+			{
+			 	next[j] = triangle[i-1][j-1] + triangle[i-1][j];
+				cout << next[j] << " + ";
+			}
+			if(!(OPTION_FLAGS & NO_ONES))
+				cout << "1";
+			cout << "\n";
+			next[len] = 1;
+			triangle.push_back(next);
 		}
-		next[len] = 1; 
-		triangle.push_back(next);
+
+		// int mlen = triangle.size();
+		// for(int i = 0; i < mlen; ++i)
+		// {
+		//  	int nlen = triangle[i].size();
+		//  	int j = 0;
+		//  	for(; j < nlen; ++j)
+		//  	{
+		// 		int y = j;
+		// 		int x = nlen - (j+1);
+		//  		cout << triangle[i][j] << x << " + ";
+		//  	}
+		// 	cout << std::endl;
+
 	}
 
-	int mlen = triangle.size();
-	for(int i = 0; i < mlen; ++i)
-	{
-	 	int nlen = triangle[i].size();
-	 	int j = 0;
-	 	for(; j < nlen; ++j)
-	 	{
-			int y = j;
-			int x = nlen - (j+1);
-	 		cout << triangle[i][j] << ".*x.^" << x << ".*y.^" << y << " + ";
-	 	}
-		cout << std::endl;
-	}
-
-	if(argc > 2)
-		print_coffs( atoi(argv[2]) );
+	if(OPTION_FLAGS & COEFF)
+		print_coffs( atoi(argv[optind]) );
 	return 0;
 }
 
