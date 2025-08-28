@@ -21,7 +21,7 @@ using std::cerr;
 using std::endl;
 
 const string VERSION_STRING = "0.0.1";
-const int DEFAULT_ARGC = 0;
+const int DEFAULT_ARGC = 1;
 const unsigned short VERBOSE          = 0x01;
 const unsigned short DEFAULTS         = 0x00;
 const unsigned short FIELDS           = 0x02;
@@ -117,20 +117,15 @@ int parse_options(int argc, char* argv[])
 		}
 	}
 
-	// if (argc < DEFAULT_ARGC) // not correct number of args
-	// {
-	// 	cerr << "Expected argument after options, -h for help" << endl;
-	// 	return -1;
-	// }
-
-	// if(argc < optind + 1) // not correct number of args
-	//  	return -1;
-
-	cout << argv[optind] << endl;
-	cout << "Coefficient flag is set: " << (OPTION_FLAGS & COEFF) << endl;
+	if ((argc - optind) < DEFAULT_ARGC) // not correct number of args
+	{
+		cerr << "Expected argument after options, -h for help" << endl;
+		return -1;
+	}
 
 	if(OPTION_FLAGS & TRIANGLE)
 	{
+		cout << endl;
 		std::vector< std::vector<int> > triangle = { {1,1} };
 		int rows = atoi( argv[optind] );
 		for(int i = 1; i < rows; ++i)
@@ -151,24 +146,14 @@ int parse_options(int argc, char* argv[])
 			next[len] = 1;
 			triangle.push_back(next);
 		}
-
-		// int mlen = triangle.size();
-		// for(int i = 0; i < mlen; ++i)
-		// {
-		//  	int nlen = triangle[i].size();
-		//  	int j = 0;
-		//  	for(; j < nlen; ++j)
-		//  	{
-		// 		int y = j;
-		// 		int x = nlen - (j+1);
-		//  		cout << triangle[i][j] << x << " + ";
-		//  	}
-		// 	cout << std::endl;
-
 	}
 
 	if(OPTION_FLAGS & COEFF)
+	{
+		cout << endl;
 		print_coffs( atoi(argv[optind]) );
+	}
+	cout << endl;
 	return 0;
 }
 
