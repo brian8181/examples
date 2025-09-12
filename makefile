@@ -22,10 +22,10 @@ all:: $(BLD)/faq1.1 $(BLD)/faq1.2
 all:: $(BLD)/read_lines
 #all:: iter_files
 # all:: $(BLD)/boost_io
-all:: $(BLD)/boost_parse_xml
-all:: $(BLD)/boost_circular_buffer
-all:: $(BLD)/boost_regex_match
-all:: $(BLD)/boost_email_example
+#all:: $(BLD)/boost_parse_xml
+#all:: $(BLD)/boost_circular_buffer
+#all:: $(BLD)/boost_regex_match
+#all:: $(BLD)/boost_email_example
 all:: $(BLD)/bfs-example
 all:: $(BLD)/rational_example
 # all:: $(BLD)/bfs-example2
@@ -81,6 +81,7 @@ all:: $(BLD)/std_thread
 all:: $(BLD)/iomanip_ex
 all:: $(BLD)/hello_ncurses
 all:: $(BLD)/modulated_loop
+all:: $(BLD)/copy_range.cpp
 
 # test:
 # 	ls $? $(SRC)

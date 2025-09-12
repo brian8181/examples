@@ -3,6 +3,7 @@
    of the character read if not a number.  It skips all blanks
    and tabs, and returns 0 for end-of-input. */
 
+#include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
 
