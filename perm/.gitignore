@@ -1,0 +1,7 @@
+# @project:  perm
+# @file:    .gitignore
+# @date:    Sun Apr  5 09:35:04 CDT 2026
+# @version: 0.0.1
+# @brief:   git ignore file
+
+build/*

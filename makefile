@@ -1,6 +1,17 @@
-# File Name:  makefile
-# Build Date: Sun Apr 21 09:46:46 PM CDT 2024
-# Version:    0.0.1
+# * @File: makefile
+# * @Date: Mon Sep  8 00:03:12 CDT 2025
+# * @Version: 0.0.1
+
+# g++ warnings
+#-Wall -Wextra -Wpedantic -Wshadow -Wconversion -Werror -Wundef
+#-fsanitize=undefined,address -Wfloat-equal -Wformat-nonliteral
+#-Wformat-security -Wformat-y2k -Wformat=2 -Wimport -Winvalid-pch
+#-Wlogical-op -Wmissing-declarations -Wmissing-field-initializers
+#-Wmissing-format-attribute -Wmissing-include-dirs -Wmissing-noreturn
+#-Wnested-externs -Wpacked -Wpointer-arith -Wredundant-decls
+#-Wstack-protector -Wstrict-null-sentinel -Wswitch-enum -Wwrite-strings
+
+SHELL:=bash
 
 CXX=g++
 CC=gcc
@@ -82,9 +93,43 @@ all:: $(BLD)/iomanip_ex
 all:: $(BLD)/hello_ncurses
 all:: $(BLD)/modulated_loop
 all:: $(BLD)/copy_range.cpp
+all:: $(BLD)/observer_pattern
+all:: $(BLD)/uniform_int_distribution
+
+
+
+int main()
+{
+  const int nrolls = 10000; // number of experiments
+  const int nstars = 95;    // maximum number of stars to distribute
+
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> distribution(0,9);
+
+  int p[10]={};
+
+  for (int i=0; i<nrolls; ++i) {
+    int number = distribution(generator);
+    ++p[number];
+  }
+
+  std::cout << "uniform_int_distribution (0,9):" << std::endl;
+  for (int i=0; i<10; ++i)
+    std::cout << i << ": " << std::string(p[i]*nstars/nrolls,'*') << std::endl;
+
+  return 0;
+}
+
+files := $(wildcard $(SRC)/*.cpp)
+targets := $(patsubst $(SRC)/%.cpp, $(BLD)/%, $(files))
 
 # test:
 # 	ls $? $(SRC)
+$(BLD)/uniform_int_distribution: $(BLD)/uniform_int_distribution.o
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(OBJ)/%.o: $(SRC)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(BLD)/std_array: $(SRC)/std_array.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/std_array.cpp -o $(BLD)/std_array
@@ -104,28 +149,28 @@ $(BLD)/faq1.2: $(SRC)/faq1.2.cpp
 $(BLD)/read_lines: $(SRC)/read_lines.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/read_lines.cpp -o $(BLD)/read_lines
 
-#$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0/boost -lboost_mpi -lboost_serialization $(SRC)/boost_mpi.cpp -o $(BLD)/boost_mpi
+#$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0/boost -lboost_mpi -lboost_serialization $(SRC)/boost_mpi.cpp -o $(BLD)/boost_mpi
 
 $(BLD)/boost_parse_xml: $(SRC)/boost_parse_xml.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_parse_xml.cpp -o $(BLD)/boost_parse_xml
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/boost_parse_xml.cpp -o $(BLD)/boost_parse_xml
 
 $(BLD)/boost_io: $(SRC)/boost_io.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_io.cpp -o $(BLD)/boost_io
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/boost_io.cpp -o $(BLD)/boost_io
 
 $(BLD)/bfs-example: $(SRC)/bfs-example.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/bfs-example.cpp -o $(BLD)/bfs-example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/bfs-example.cpp -o $(BLD)/bfs-example
 
 $(BLD)/rational_example: $(SRC)/rational_example.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/rational_example.cpp -o $(BLD)/rational_example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/rational_example.cpp -o $(BLD)/rational_example
 
 $(BLD)/bfs-example2: $(SRC)/bfs-example2.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/bfs-example2.cpp -o $(BLD)/bfs-example2
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/bfs-example2.cpp -o $(BLD)/bfs-example2
 
 $(BLD)/boost_circular_buffer: $(SRC)/boost_circular_buffer.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_circular_buffer.cpp -o $(BLD)/boost_circular_buffer
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/boost_circular_buffer.cpp -o $(BLD)/boost_circular_buffer
 
 $(BLD)/boost_email_example: $(SRC)/boost_email_example.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_email_example.cpp -o $(BLD)/boost_email_example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/boost_email_example.cpp -o $(BLD)/boost_email_example
 
 $(BLD)/iomanip_ex: $(OBJ)/iomanip_ex.o
 	 $(CXX) $(CXXFLAGS) $^ -o $@
@@ -137,19 +182,19 @@ $(BLD)/regx_replace1: $(SRC)/regx_replace1.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/regx_replace1.cpp -o $(BLD)/regx_replace1
 
 $(BLD)/regex_replace_example: $(OBJ)/regex_replace_example.o
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(OBJ)/regex_replace_example.o -o $(BLD)/regex_replace_example
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(OBJ)/regex_replace_example.o -o $(BLD)/regex_replace_example
 
 $(BLD)/regex_replace_example.o: $(SRC)/regex_replace_example.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 -c $(SRC)/regex_replace_example.cpp -o $(OBJ)/regex_replace_example.o
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 -c $(SRC)/regex_replace_example.cpp -o $(OBJ)/regex_replace_example.o
 
 $(BLD)/boost_regex_match: $(SRC)/boost_regex_match.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/boost_regex_match.cpp -o $(BLD)/boost_regex_match
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/boost_regex_match.cpp -o $(BLD)/boost_regex_match
 
 $(BLD)/sample_formats: $(SRC)/sample_formats.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/sample_formats.cpp -o $(BLD)/sample_formats
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/sample_formats.cpp -o $(BLD)/sample_formats
 
 $(BLD)/sample_userType: $(SRC)/sample_userType.cpp
-	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_79_0 $(SRC)/sample_userType.cpp -o $(BLD)/sample_userType
+	$(CXX) $(CXXFLAGS) -I ~/src/boost_1_89_0 $(SRC)/sample_userType.cpp -o $(BLD)/sample_userType
 
 $(BLD)/sub_match: $(SRC)/sub_match.cpp
 	$(CXX) $(CXXFLAGS) $(SRC)/sub_match.cpp -o $(BLD)/sub_match
@@ -249,6 +294,10 @@ $(BLD)/signals_ex4: $(SRC)/signals_ex4.c
 std_hex:
 	$(CXX) $(SRC)/std_hex.cpp -o $(BLD)/std_hex
 
+$(BLD)/observer_pattern:
+	$(CXX) $(CXXFLAGS) $(SRC)/observer_pattern.cpp -o $(BLD)/observer_pattern
+
+
 std_find_string:
 	$(CXX) $(SRC)/std_find_string.cpp -o $(BLD)/std_find_string
 
@@ -327,7 +376,6 @@ $(BLD)/hello_ncurses: $(SRC)/hello_ncurses.c
 
 $(BLD)/modulated_loop:
 	$(CXX) $(CXXFLAGS) $(SRC)/modulated_loop.cpp -o $(BLD)/modulated_loop
-
 
 # delete object files & app executable
 .PHONY: clean
