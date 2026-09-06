@@ -1,0 +1,7 @@
+# @project:  deblank
+# @file:    .gitignore
+# @date:    Sat Sep  5 06:41:38 AM EDT 2026
+# @version: 0.0.1
+# @brief:   git ignore file
+
+build/*
