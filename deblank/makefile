@@ -54,7 +54,7 @@ $(BLD)/deblank: $(OBJ)/main.o $(OBJ)/deblank.o $(OBJ)/fileio.o
 $(BLD)/libdeblank.so: $(OBJ)/main.o $(BLD)/deblank.o
 	@echo -e "$(GREEN)Target -> \"$@: $^$(RESET)"
 	$(CXX) $(CXXFLAGS) $(CXXEXTRA) --shared $(OBJ)/main.o $(BLD)/deblank.o -o $(BLD)/libdeblank.so
-	-chmod 755 $(BLD)/libdeblank.so
+	-chmod 755 $(BLD)/libdeblank.so``
 
 $(BLD)/libdeblank.a: $(OBJ)/main.o $(BLD)/deblank.o
 	@echo -e "$(GREEN)Target -> \"$@: $^$(RESET)"
@@ -69,8 +69,6 @@ $(BLD)/TEST_deblank: $(OBJ)/deblank.o $(OBJ)/TEST_deblank.o
 	@echo -e "$(GREEN)Target -> \"$@: $^$(RESET)"
 	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
 
-# rules <?= "\nTEST\n ?>
-# copy header to build dir
 $(BLD)/%.hpp: $(SRC)/%.hpp
 	@echo -e "$(GREEN)Target -> \"$@: $^$(RESET)"
 	-cp $^ $@

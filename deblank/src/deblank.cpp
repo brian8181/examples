@@ -34,9 +34,12 @@ static struct option long_options[] =
 
 unsigned short OPTION_FLAGS = DEFAULTS;
 
-void get_time(char* str);
-void deblank(char* str);
+void get_time1(char* str);
+void get_time2(char* str);
+void get_time3(char* str);
+void deblank1(char* str);
 void deblank2(char* str);
+void deblank3(char* str);
 
 void print_version()
 {
@@ -78,27 +81,35 @@ int parse_options(int argc, char* argv[])
 	string path = argv[0];   // get exe file path
 	cout << argv[0] << endl;
 
+	if(argc < 2)
+	{
+		cerr << "Expected argument after options, -h for help" << endl;
+		return -1;
+	}
+
 	string s;
 	read_str(argv[1], s);
 	string str1 = s;
 	string str2 = s;
+	string str3 = s;
 	char* v1 = str1.data();
 	char* v2 = str2.data();
+	char* v3 = str3.data();
 
-	get_time(v1);
-	get_time(v2);
-
+	get_time1(v1);
+	get_time2(v2);
+	get_time3(v3);
 	// cout << "ver1 = " << v1 << endl;
 	// cout << "ver2 = " << v2 << endl;
 
 	return 0;
 }
 
-void get_time(char* str)
+void get_time1(char* str)
 {
 	auto start = std::chrono::steady_clock::now();
 	// --- Place the code you want to measure here ---
-	deblank(str);
+	deblank1(str);
 	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	// -----------------------------------------------
 	// 2. Record the ending time point
@@ -113,7 +124,48 @@ void get_time(char* str)
 	std::cout << "Elapsed time: " << elapsed_ms << " ms\n";
 	std::cout << "Elapsed time: " << elapsed_us << " us\n";
 }
-void deblank(char* str)
+
+void get_time2(char* str)
+{
+	auto start = std::chrono::steady_clock::now();
+	// --- Place the code you want to measure here ---
+	deblank2(str);
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	// -----------------------------------------------
+	// 2. Record the ending time point
+	auto end = std::chrono::steady_clock::now();
+	// 3. Calculate the difference (duration)
+	auto elapsed = end - start;
+	// 4. Convert and print the duration in your preferred unit
+	// Example: Milliseconds
+	auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
+	// Example: Microseconds
+	auto elapsed_us = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+	std::cout << "Elapsed time: " << elapsed_ms << " ms\n";
+	std::cout << "Elapsed time: " << elapsed_us << " us\n";
+}
+
+void get_time3(char* str)
+{
+	auto start = std::chrono::steady_clock::now();
+	// --- Place the code you want to measure here ---
+	deblank3(str);
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	// -----------------------------------------------
+	// 2. Record the ending time point
+	auto end = std::chrono::steady_clock::now();
+	// 3. Calculate the difference (duration)
+	auto elapsed = end - start;
+	// 4. Convert and print the duration in your preferred unit
+	// Example: Milliseconds
+	auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
+	// Example: Microseconds
+	auto elapsed_us = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
+	std::cout << "Elapsed time: " << elapsed_ms << " ms\n";
+	std::cout << "Elapsed time: " << elapsed_us << " us\n";
+}
+
+void deblank1(char* str)
 {
 	int len = static_cast<int>(std::strlen(str));
 	int i = 0;
@@ -140,4 +192,22 @@ void deblank2(char* str)
 		++i;
 	}
 	str[i] = '\0';
+}
+
+void deblank3(char* str)
+{
+	int len = static_cast<int>(std::strlen(str));
+	char* str2 = new char[len + 1];
+	int i = 0;
+	for(int offset = 0; offset < len; ++offset)
+	{
+		if(str[offset] == ' ')
+			continue;
+		if (i != offset)
+			str2[i] = str[offset];
+		++i;
+	}
+	str2[i] = '\0';
+	std::strcpy(str, str2);
+	delete[] str2;	
 }
