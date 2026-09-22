@@ -6,43 +6,30 @@
  */
 #include "int256.hpp"
 
-int256::int256()
-{
-    _n[0] = 0;
-    _n[1] = 0;
-    _n[2] = 0;
-    _n[3] = 0;
+int256::int256() {
+  _n[0] = 0;
+  _n[1] = 0;
+  _n[2] = 0;
+  _n[3] = 0;
 }
 
-int256::int256( const int256& src )
-{
+int256::int256(const int256 &src) {}
 
+int256::~int256() {}
+
+void int256::add(int256 n) {
+  long ci = 0;
+  for (int i = 0; i < 4; ++i) {
+    _n[i] += (n._n[i] + ci);
+    ci = _n[i] / 256;
+    _n[i] = _n[i] % 256;
+  }
 }
 
-int256::~int256()
-{
+void int256::to_string() {}
 
-}
-
-void int256::add(int256 n)
-{
-    int ci = 0;
-    for(int i = 0; i < 4; ++i)
-    {
-        _n[i] += (n._n[i] + ci);
-        if(_n[i] < (n._n[i] + ci))
-            ci = _n[i] - (n._n[i] + ci);
-    }
-}
-
-void int256::to_string()
-{
-
-}
-
-int main()
-{
-    int256 n;
-    n.add(1);
-    return 0;
+int main() {
+  int256 n;
+  n.add(1);
+  return 0;
 }
