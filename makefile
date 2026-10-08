@@ -377,6 +377,9 @@ $(BLD)/hello_ncurses: $(SRC)/hello_ncurses.c
 $(BLD)/modulated_loop:
 	$(CXX) $(CXXFLAGS) $(SRC)/modulated_loop.cpp -o $(BLD)/modulated_loop
 
+$(BLD)/random_walk:
+	$(CXX) -Wall -std=c++20 -DDEBUG -ggdb $(SRC)/random_walk.cpp -o $(BLD)/random_walk
+
 # delete object files & app executable
 .PHONY: clean
 clean:

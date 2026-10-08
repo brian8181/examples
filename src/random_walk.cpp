@@ -7,8 +7,8 @@
 #include <vector>
 using namespace std;
 
-int main(int argc, char *argv[]) {
-
+int main(int argc, char *argv[]) 
+{
   enum direction { right = 1, left = 2, up = 3, down = 4 };
   // Initialize a random number generator
   random_device rd;
@@ -31,29 +31,31 @@ int main(int argc, char *argv[]) {
 
   auto start = std::chrono::high_resolution_clock::now();
   int j = 0;
-  for (; j < rounds; ++j) {
-
+  for (; j < rounds; ++j) 
+  {
     std::cout << "Round = " << j << endl;
-    for (int i = 0; i < len; ++i) {
-
+    for (int i = 0; i < len; ++i) 
+    {
       vwalk.push_back(std::make_pair(x, y));
-      if (argv[3] && (x > 5 || x < -5 || y > 5 || y < -5)) {
-        for (int n = 0; n < vwalk.size(); ++n) {
+      if (argv[3] && (x > 5 || x < -5 || y > 5 || y < -5)) 
+      {
+        for (int n = 0; n < vwalk.size(); ++n) 
+        {
           std::cout << n << "(" << vwalk[n].first << "," << vwalk[n].second
                     << "), ";
         }
         std::cout << std::endl << std::endl;
-        vwalk.clear();
+        vwalk.clear(); // BKP hu?? 
         i = len;
         break;
       }
       int rv = distrib(gen);
       // walk += rv;
 
-      switch (rv) {
+      switch (rv) 
+      {
       case right:
         x += 1;
-
         // if(token == right) cout << ">" << endl;
         // token = right;
         break;
@@ -76,9 +78,7 @@ int main(int argc, char *argv[]) {
 
       max_x = abs(x) > abs(max_x) ? x : max_x;
       max_y = abs(y) > abs(max_y) ? y : max_y;
-      max_x_y = (abs(x) + abs(y)) > (abs(max_x) + abs(max_y))
-                    ? (abs(x) + abs(y))
-                    : (abs(max_x) + abs(max_y));
+      max_x_y = (abs(x) + abs(y)) > (abs(max_x) + abs(max_y)) ? (abs(x) + abs(y)) : (abs(max_x) + abs(max_y));
     }
     // auto max = std::max_element(vwalk.begin(), vwalk.end());
     // auto min = std::min_element(vwalk.begin(), vwalk.end());
@@ -88,13 +88,14 @@ int main(int argc, char *argv[]) {
     int total_x = 0;
     int total_y = 0;
 
-    for (int i = 0; i < vwalk.size(); ++i) {
+    for (int i = 0; i < vwalk.size(); ++i) 
+    {
       total_x += vwalk[i].first;
       total_y += vwalk[i].second;
     }
 
-    double avg_x = static_cast<double>(total_x) / vwalk.size();
-    double avg_y = static_cast<double>(total_y) / vwalk.size();
+    double avg_x = static_cast<double>(total_x) / len;
+    double avg_y = static_cast<double>(total_y) / len;
     // cout << "Average x = " << avg_x << ", Average y = " << avg_y << endl;
     // cout << "Total steps = " << vwalk.size() << endl;
 
@@ -123,8 +124,8 @@ int main(int argc, char *argv[]) {
     total_x = 0;
     total_y = 0;
   }
-  auto end = std::chrono::high_resolution_clock::now();
 
+  auto end = std::chrono::high_resolution_clock::now();
   std::cout << "[[\n" << ss.str() << "\t]]\n";
 
   auto mseconds =
@@ -138,6 +139,5 @@ int main(int argc, char *argv[]) {
             << " milliseconds" << std::endl;
   std::cout << (long)((len * rounds) / mseconds.count() * 1000) / 1'000
             << " KHz" << std::endl;
-
   return 0;
 }
